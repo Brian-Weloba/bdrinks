@@ -1,10 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-      <h1>Berny's</h1>
-
+    <div className="flex flex-col h-screen">
+      <Navbar />
+      {/* //TODO: add grow to body */}
+      <div className="grow" />
+      <Footer />
+    </div>
   );
 }
 
