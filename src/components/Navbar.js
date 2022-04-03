@@ -1,10 +1,11 @@
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
+import { useEffect, useState } from "react";
 
 const navigation = [
   { name: "All", href: "/", current: true },
-  { name: "Whisky", href: "/category/whiskey", current: false },
+  { name: "Whisky", href: "/category/whisky", current: false },
   { name: "Gin", href: "/category/gin", current: false },
   { name: "Rum", href: "/category/rum", current: false },
   { name: "Brandy", href: "/category/brandy", current: false },
@@ -13,11 +14,30 @@ const navigation = [
   { name: "Cans", href: "/category/cans", current: false },
 ];
 
+
+
+//function to update the current item
+function updateCurrent(navigation, path) {
+  navigation.forEach((item) => {
+    if (item.href.toLowerCase() === path.toLowerCase()) {
+      item.current = true;
+    } else {
+      item.current = false;
+    }
+  });
+}
+
+
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
+  const [pathname, setPathname] = useState(window.location.pathname);
+  useEffect(() => {
+    updateCurrent(navigation, pathname);
+  }, [pathname]);
   return (
     <Disclosure as="nav" className="bg-zinc-800">
       {({ open }) => (
