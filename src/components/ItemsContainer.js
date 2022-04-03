@@ -1,5 +1,4 @@
 import React from "react";
-import { Item } from "./Item";
 
 const ItemsContainer = () => {
   return (
@@ -65,11 +64,6 @@ const ItemsContainer = () => {
           </li>
         </ul>
       </div>
-      {/* INFORMATION
-Payment: On Delivery
-Delivery Time: 90 MINUTES MON-SUN 8:30AM – 6:15PM
-Call: +254711346421
-Buy Goods:9378773 */}
       <div>
         <ul>
           <li>
