@@ -1,3 +1,4 @@
+import { HeartIcon, ShoppingBagIcon } from "@heroicons/react/outline";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -44,9 +45,15 @@ export const Product = ({ products, loading }) => {
             <h5 className="text-gray-900 text-sm md:text-base lg:text-lg font-semibold mb-2 h-14 md:h-20">
               {product.productName} - {optionVolume()}
             </h5>
-            <p className="text-red-700 text-base font-medium mb-4">
-              KES {optionPrice()}
-            </p>
+            <div className="text-sm md:text-base lg:text-lg flex flex-col xl:flex-row justify-between">
+              <p className="text-red-700 text-base font-medium mb-4 text-center">
+                KES {optionPrice()}
+              </p>
+              <div className="flex justify-evenly mb-4">
+              <ShoppingBagIcon className="h-6 w-6 lg:h-7 lg:w-7 pr-1 lg:pr-0  text-zinc-800 hover:text-red-800"></ShoppingBagIcon>
+              <HeartIcon className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 hover:text-red-800"></HeartIcon>
+              </div>
+            </div>
             <button
               // to={`/product/${product.productId}`}
               type="button"

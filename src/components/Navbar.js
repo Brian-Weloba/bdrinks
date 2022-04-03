@@ -3,14 +3,14 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
 
 const navigation = [
-  { name: "All", href: "#", current: true },
-  { name: "Whisky", href: "#", current: false },
-  { name: "Gin", href: "#", current: false },
-  { name: "Rum", href: "#", current: false },
-  { name: "Brandy", href: "#", current: false },
-  { name: "Vodka", href: "#", current: false },
-  { name: "Wines", href: "#", current: false },
-  { name: "Cans", href: "#", current: false },
+  { name: "All", href: "/", current: true },
+  { name: "Whisky", href: "/category/whiskey", current: false },
+  { name: "Gin", href: "/category/gin", current: false },
+  { name: "Rum", href: "/category/rum", current: false },
+  { name: "Brandy", href: "/category/brandy", current: false },
+  { name: "Vodka", href: "/category/vodka", current: false },
+  { name: "Wines", href: "/category/wines", current: false },
+  { name: "Cans", href: "/category/cans", current: false },
 ];
 
 function classNames(...classes) {
