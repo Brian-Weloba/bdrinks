@@ -6,7 +6,9 @@ const ItemsContainer = () => {
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:px-8 px-5 py-16">
       <div>
         <ul>
-          <h1 className="mb-1 font-semibold">SOCIAL</h1>
+          <li>
+            <h1 className="mb-1 font-semibold">SOCIAL</h1>
+          </li>
           <li className="py-2">
             <a
               className="text-zinc-400 hover:text-white"
@@ -14,7 +16,7 @@ const ItemsContainer = () => {
             >
               <div className="flex">
                 <svg
-                  class="w-6 h-6 fill-current"
+                  className="w-6 h-6 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
                 >
@@ -28,7 +30,7 @@ const ItemsContainer = () => {
             <a className="text-zinc-400 hover:text-white" href="#">
               <div className="flex">
                 <svg
-                  class="w-6 h-6  fill-current"
+                  className="w-6 h-6  fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                 >
@@ -42,7 +44,9 @@ const ItemsContainer = () => {
       </div>
       <div>
         <ul>
-          <h1 className="mb-1 font-semibold">CONTACT</h1>
+          <li>
+            <h1 className="mb-1 font-semibold">CONTACT</h1>
+          </li>
           <li className="py-2">
             <a
               className="text-zinc-400 hover:text-white"
@@ -68,7 +72,9 @@ Call: +254711346421
 Buy Goods:9378773 */}
       <div>
         <ul>
-          <h1 className="mb-1 font-semibold">INFORMATION</h1>
+          <li>
+            <h1 className="mb-1 font-semibold">INFORMATION</h1>
+          </li>
           <li className="py-2">
             <p>Payment: On Delivery</p>
           </li>
