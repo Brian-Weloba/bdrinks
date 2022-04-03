@@ -42,10 +42,10 @@ export const Product = ({ products, loading }) => {
             />
           </a>
           <div className="p-6 col-span-1 flex flex-col">
-            <h5 className="text-gray-900 text-sm md:text-base lg:text-lg font-semibold mb-2 h-14 md:h-20">
+            <h5 className="text-gray-900 text-sm md:text-sm lg:text-base font-semibold mb-2 h-14 md:h-20">
               {product.productName} - {optionVolume()}
             </h5>
-            <div className="text-sm md:text-base lg:text-lg flex flex-col xl:flex-row justify-between">
+            <div className="text-sm md:text-base lg:text-base flex flex-col xl:flex-row justify-between">
               <p className="text-red-700 text-base font-medium mb-4 text-center">
                 KES {optionPrice()}
               </p>

@@ -31,8 +31,8 @@ export default function Products({ cat }) {
   console.log(products);
 
   return (
-    <div className=" sm:p-4 md:p-8 grow bg-zinc-200">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1 sm:gap-2 p-2 sm:p-4 md:p-8 bg-transparent">
+    <div className=" sm:px-4 md:px-8 pt-16 grow bg-zinc-200">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-2 p-2 sm:p-4 md:p-8 bg-transparent">
         <Product products={products} loading={loading} />
       </div>
     </div>
