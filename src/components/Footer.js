@@ -4,7 +4,7 @@ import ItemsContainer from "./ItemsContainer";
 function Footnote() {
   return (
     <div className="text-center">
-      <p>© 2022 Berny'z Liquor Store All Rights Reserved.</p>
+      <p className=" text-sm sm:text-base pb-2">© 2022 Berny'z Liquor Store All Rights Reserved.</p>
     </div>
   );
 }
