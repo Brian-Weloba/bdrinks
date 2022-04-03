@@ -9,11 +9,16 @@ export default function App() {
     <div className="flex flex-col h-screen">
       <Router>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Products cat={"all"}/>} />
-          <Route path="/category/:pathCategory" element={<Products cat={""} />} />
-        </Routes>
-        <Footer />
+        <nav className="relative">
+          <Routes>
+            <Route path="/" element={<Products cat={"all"} />} />
+            <Route
+              path="/category/:pathCategory"
+              element={<Products cat={""} />}
+            />
+          </Routes>
+          <Footer />
+        </nav>
       </Router>
     </div>
   );
