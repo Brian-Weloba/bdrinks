@@ -7,7 +7,7 @@ export default function Products({ cat }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [category] = useState(cat);
-  const {pathCategory} = useParams();
+  const { pathCategory } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(10);
 
@@ -19,7 +19,7 @@ export default function Products({ cat }) {
         res = await axios.get("https://bernyz.co.ke/api/products");
       } else {
         res = await axios.get(
-          `https:bernyz.co.ke/api/products/categories/get?name=${pathCategory}`
+          `https://bernyz.co.ke/api/products/categories/get?name=${pathCategory}`
         );
       }
       setProducts(res.data);
