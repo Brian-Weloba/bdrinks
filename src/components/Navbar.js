@@ -44,7 +44,7 @@ export default function Navbar() {
               <div className="relative flex items-center justify-between h-16">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}
-                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-700">
                     <span className="sr-only">Open menu</span>
                     {open ? (
                       <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -95,20 +95,20 @@ export default function Navbar() {
                   <div className="flex items-center justify-center">
                     <button
                       type="button"
-                      className="bg-zinc-800 p-1 rounded-full text-zinc-400 hover:text-orange-400"
+                      className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-orange-400"
                     >
                       <span className="sr-only">View cart</span>
                       <ShoppingCartIcon
-                        className="h-8 w-8 mx-1"
+                        className="h-6 w-6 sm:h-8 sm:w-8 mx-1"
                         aria-hidden="true"
                       />
                     </button>
                     <button
                       type="button"
-                      className="bg-zinc-800 p-1 rounded-full text-zinc-400 hover:text-red-800"
+                      className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-800"
                     >
                       <span className="sr-only">View cart</span>
-                      <HeartIcon className="h-8 w-8 mx-1" aria-hidden="true" />
+                      <HeartIcon className=" h-6 w-6 sm:h-8 sm:w-8 mx-1" aria-hidden="true" />
                     </button>
                   </div>
                 </div>

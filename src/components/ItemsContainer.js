@@ -2,12 +2,16 @@ import React from "react";
 
 const ItemsContainer = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:px-8 px-5 py-16">
-      <div className=" col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:pl-8 p-0">
-        <div className="col-span-2 justify-center mx-auto">
-         <img src={process.env.PUBLIC_URL + "/logo.png"} alt="logo" className=" w-1/2 mx-auto sm:mr-auto sm:ml-0"/>
+    <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:px-8 px-5 py-10 text-center sm:text-left">
+      <div className=" col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-0 sm:pl-8 p-0 ">
+        <div className=" col-span-1 sm:col-span-2 justify-center mx-auto">
+          <img
+            src={process.env.PUBLIC_URL + "/logo.png"}
+            alt="logo"
+            className=" w-2/3 sm:w-1/2 mx-auto sm:mr-auto sm:ml-0 pb-3"
+          />
         </div>
-        <div>
+        <div className=" pt-1 flex justify-center sm:justify-start sm:border-t-2 sm:border-zinc-400">
           <ul>
             <li>
               <h1 className="mb-1 font-semibold">SOCIAL</h1>
@@ -17,7 +21,7 @@ const ItemsContainer = () => {
                 className="text-zinc-400 hover:text-white"
                 href="https://wa.me/254711346421"
               >
-                <div className="flex">
+                <div className="flex mx-auto">
                   <svg
                     className="w-6 h-6 fill-current"
                     xmlns="http://www.w3.org/2000/svg"
@@ -30,8 +34,8 @@ const ItemsContainer = () => {
               </a>
             </li>
             <li className="py-2">
-              <a className="text-zinc-400 hover:text-white" href="#">
-                <div className="flex">
+              <a className=" text-zinc-400 hover:text-white" href="#">
+                <div className="flex mx-auto">
                   <svg
                     className="w-6 h-6  fill-current"
                     xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +49,7 @@ const ItemsContainer = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className=" pt-1 sm:border-t-2 sm:border-zinc-400">
           <ul>
             <li>
               <h1 className="mb-1 font-semibold">CONTACT</h1>

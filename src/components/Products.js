@@ -19,7 +19,7 @@ export default function Products({ cat }) {
         res = await axios.get("https://bernyz.co.ke/api/products");
       } else {
         res = await axios.get(
-          `http://localhost:8081/api/products/categories/get?name=${pathCategory}`
+          `https:bernyz.co.ke/api/products/categories/get?name=${pathCategory}`
         );
       }
       setProducts(res.data);
@@ -27,8 +27,6 @@ export default function Products({ cat }) {
     };
     fetchProducts();
   }, []);
-
-  console.log(products);
 
   return (
     <div className=" sm:px-4 md:px-8 pt-16 grow bg-zinc-200">
