@@ -2,6 +2,7 @@ import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { ShoppingCartIcon, HeartIcon } from "@heroicons/react/solid";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const navigation = [
   { name: "Whisky", href: "/category/whisky", current: false },
@@ -95,6 +96,8 @@ export default function Navbar() {
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <div className="flex items-center justify-center">
+                    <Link 
+                      to="/cart">
                     <button
                       type="button"
                       className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-orange-400"
@@ -105,6 +108,7 @@ export default function Navbar() {
                         aria-hidden="true"
                       />
                     </button>
+                    </Link>
                     <button
                       type="button"
                       className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-800"

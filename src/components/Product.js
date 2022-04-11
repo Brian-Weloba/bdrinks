@@ -85,8 +85,8 @@ export const Product = ({ products, loading }) => {
                 KES {optionPrice()}
               </p>
               <div className="flex justify-evenly mb-4">
-                <ShoppingBagIcon className="h-6 w-6 lg:h-7 lg:w-7 pr-1 lg:pr-0  text-zinc-800 sm:hover:text-red-800"></ShoppingBagIcon>
-                <HeartIcon className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 sm:hover:text-red-800"></HeartIcon>
+                <ShoppingBagIcon className="h-5 w-5 lg:h-6 lg:w-6 pr-1 lg:pr-0  text-zinc-800 sm:hover:text-red-800"></ShoppingBagIcon>
+                <HeartIcon className="h-5 w-5 lg:h-6 pl-1 lg:w-6 lg:pl-0 text-zinc-800 sm:hover:text-red-800"></HeartIcon>
               </div>
             </div>
             <button
