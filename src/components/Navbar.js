@@ -55,14 +55,16 @@ export default function Navbar() {
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
-                    <a href="/">
+                    <a href="/"
+                    aria-label="Berny's">
                       <img
                         className="block lg:hidden h-10 w-auto"
                         src={process.env.PUBLIC_URL + "/trademark.png"}
                         alt="Berny's liquor"
                       />
                     </a>
-                    <a href="/">
+                    <a href="/"
+                     aria-label="Berny's">
                       <img
                         className="hidden lg:block h-10 w-auto"
                         src={process.env.PUBLIC_URL + "/logo.png"}
