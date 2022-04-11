@@ -1,11 +1,12 @@
 import { HeartIcon, ShoppingBagIcon } from "@heroicons/react/outline";
-import React from "react";
+import React, { Suspense } from "react";
 import { Link } from "react-router-dom";
 import { PlaceholderImage } from "./PlaceholderImage";
 
 export const Product = ({ products, loading }) => {
-const [imageLoaded, setImageLoaded] = React.useState(false);
-const imageStyle = !imageLoaded ? { display: "none" } : {};
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+  const imageStyle = !imageLoaded ? { display: "none" } : {};
+  const [show, setShow] = React.useState((state) => !state, true);
 
   if (loading) {
     return (
@@ -62,16 +63,19 @@ const imageStyle = !imageLoaded ? { display: "none" } : {};
     return (
       <div className=" justify-center h-max" key={index}>
         <div className="bg-white max-w-sm border-zinc-300 border-2">
-          <a href="#!">
-          {!imageLoaded && <PlaceholderImage/> }
-            <img
-              className="rounded-t-lg" 
-              style={imageStyle}
-              onLoad={() => setImageLoaded(true)}
-              src={process.env.PUBLIC_URL + "/assets/" + product.productImage}
-              alt=""
-            />
-          </a>
+          <Suspense fallback={<PlaceholderImage />}>
+            <a href="#!">
+              {!imageLoaded && <PlaceholderImage />}
+              <img
+                className="rounded-t-lg"
+                style={imageStyle}
+                onLoad={() => setImageLoaded(true)}
+                src={process.env.PUBLIC_URL + "/assets/" + product.productImage}
+                alt={product.productName}
+              />
+            </a>
+          </Suspense>
+
           <div className="p-6 col-span-1 flex flex-col">
             <h5 className="text-gray-900 text-sm md:text-sm lg:text-base font-semibold mb-2 h-14 md:h-20">
               {product.productName} - {optionVolume()}

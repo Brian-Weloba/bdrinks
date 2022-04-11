@@ -2,7 +2,7 @@ import React from "react";
 
 const ItemsContainer = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:px-8 px-5 py-10 text-center sm:text-left">
+    <div className="grid grid-cols-1 sm:grid-cols-4 gap-0 sm:gap-6 sm:px-8 px-5 py-10 text-center sm:text-left">
       <div className=" col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-0 sm:pl-8 p-0 ">
         <div className=" col-span-1 sm:col-span-2 justify-center mx-auto">
           <img
@@ -18,7 +18,7 @@ const ItemsContainer = () => {
             </li>
             <li className="py-2">
               <a
-                className="text-zinc-400 hover:text-white"
+                className="text-white sm:text-zinc-400 hover:text-white"
                 href="https://wa.me/254711346421"
               >
                 <div className="flex mx-auto">
@@ -34,7 +34,7 @@ const ItemsContainer = () => {
               </a>
             </li>
             <li className="py-2">
-              <a className=" text-zinc-400 hover:text-white" href="#">
+              <a className=" text-white sm:text-zinc-400 hover:text-white" href="facebook">
                 <div className="flex mx-auto">
                   <svg
                     className="w-6 h-6  fill-current"
@@ -56,7 +56,7 @@ const ItemsContainer = () => {
             </li>
             <li className="py-2">
               <a
-                className="text-zinc-400 hover:text-white"
+                className="text-white sm:text-zinc-400 hover:text-white"
                 href="tel:+254711346421"
               >
                 Phone
@@ -64,7 +64,7 @@ const ItemsContainer = () => {
             </li>
             <li className="py-2">
               <a
-                className="disabled text-zinc-400 hover:text-white"
+                className="disabled text-white sm:text-zinc-400 hover:text-white"
                 href="mailto:bweloba@gmail.com"
               >
                 Email
@@ -88,7 +88,9 @@ const ItemsContainer = () => {
             <p>Call: +254711346421</p>
           </li>
           <li>
-            <p>Buy Goods:9378773</p>
+            {/* mpesa icon */}
+            <img className="w-1/2 sm:w-1/4 mt-1 mx-auto sm:ml-0"  src={`${process.env.PUBLIC_URL}/mpesa.png`} alt="Buy goods" />
+            {/* <p>Buy Goods:9378773</p> */}
           </li>
         </ul>
       </div>
