@@ -9,7 +9,8 @@ export const CartItem = () => {
       <div className="flex h-max">
         <div className=" w-28 sm:w-48 rounded-lg my-auto">
           <a href="#!">
-            <PlaceholderImage />
+            {/* <PlaceholderImage /> */}
+            <img className=" rounded-lg" src={process.env.PUBLIC_URL + "/assets/gilbeys-gin.jpg"} alt="" />
           </a>
         </div>
         <div className="flex flex-col">
@@ -21,7 +22,7 @@ export const CartItem = () => {
               Volume
             </h5>
             <div className="text-sm md:text-base lg:text-base flex flex-col xl:flex-row justify-between">
-              <p className="text-red-700 text-base font-medium mb-4">
+              <p className="text-red-700 text-base font-medium mb-2 sm:mb-4">
                 KES 5,000
               </p>
             </div>
