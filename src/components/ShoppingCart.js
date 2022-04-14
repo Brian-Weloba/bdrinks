@@ -4,7 +4,7 @@ import { CartItem } from "./CartItem";
 
 export const ShoppingCart = () => {
   return (
-    <div className="pt-16 grow bg-zinc-300">
+    <div className="pt-16 grow bg-zinc-100">
       <div className="sm:mx-4 md:mx-8 w-100 mx-0">
         <h1 className="  text-red-800 font-bold text-center sm:test-left ml-6 text-4xl py-10  bg-transparent">
           Shopping Cart
