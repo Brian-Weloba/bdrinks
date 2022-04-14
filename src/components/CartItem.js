@@ -5,9 +5,9 @@ import { ShoppingBagIcon, HeartIcon, XIcon } from "@heroicons/react/outline";
 
 export const CartItem = () => {
   return (
-    <div className=" h-max flex justify-between m-1 sm:m-6 rounded-lg">
+    <div className=" h-max flex justify-between m-1 sm:m-6 border-b-2 border-zinc-400">
       <div className="flex h-max pb-6">
-        <div className=" w-28 sm:w-48 rounded-lg border-zinc-300 border-2">
+        <div className=" w-28 sm:w-48 rounded-lg border-zinc-400 border-2">
           <a href="#!">
             <PlaceholderImage />
           </a>
