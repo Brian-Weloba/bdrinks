@@ -7,7 +7,7 @@ export const CartItem = () => {
   return (
     <div className=" h-max flex justify-between m-6 rounded-lg">
       <div className="flex">
-        <div className=" w-48 rounded-lg border-zinc-300 border-2">
+        <div className=" w-24 sm:w-48 rounded-lg border-zinc-300 border-2">
           <a href="#!">
             <PlaceholderImage />
           </a>
