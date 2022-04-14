@@ -3,7 +3,7 @@ import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 
-const people = [
+const quantity = [
   {
     id: 1,
     name: '1',},
@@ -42,7 +42,7 @@ function classNames(...classes) {
 }
 
 export default function Example() {
-  const [selected, setSelected] = useState(people[3])
+  const [selected, setSelected] = useState(quantity[0])
 
   return (
     <Listbox className="flex" value={selected} onChange={setSelected}>
@@ -67,7 +67,7 @@ export default function Example() {
               leaveTo="opacity-0"
             >
               <Listbox.Options className="absolute z-10 mt-1 w-max bg-white shadow-lg max-h-32 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-                {people.map((person) => (
+                {quantity.map((person) => (
                   <Listbox.Option
                     key={person.id}
                     className={({ active }) =>
