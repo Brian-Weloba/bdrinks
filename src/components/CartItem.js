@@ -18,11 +18,11 @@ export const CartItem = () => {
             <h5 className="text-gray-900 text-sm md:text-sm lg:text-base font-semibold mb-2 ">
               productName
             </h5>
-            <h5 className="text-gray-900 text-sm md:text-sm lg:text-base font-semibold mb-2 ">
+            <h5 className="text-gray-900 text-sm md:text-sm lg:text-base  mb-2 ">
               Volume
             </h5>
             <div className="text-sm md:text-base lg:text-base flex flex-col xl:flex-row justify-between">
-              <p className="text-red-700 text-base font-medium mb-2 sm:mb-4">
+              <p className="text-red-700 text-base mb-2 sm:mb-4 font-bold">
                 KES 5,000
               </p>
             </div>
