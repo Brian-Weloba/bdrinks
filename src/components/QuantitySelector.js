@@ -50,7 +50,7 @@ export default function Example() {
         <>
           {/* <Listbox.Label className="block text-sm font-medium text-gray-700">Quantity</Listbox.Label> */}
           <div className="mt-1 relative">
-            <Listbox.Button className="relative w-max bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-red-800 focus:border-red-800 sm:text-sm">
+            <Listbox.Button className="relative w-max bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-red-800 focus:border-red-800 text-xs sm:text-sm">
               <span className="flex items-center">
                 <span className="ml-3 block truncate">{selected.name}</span>
               </span>
