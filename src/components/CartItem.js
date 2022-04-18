@@ -1,7 +1,6 @@
 import React from "react";
-import { PlaceholderImage } from "./PlaceholderImage";
 import QuantitySelector from "./QuantitySelector";
-import { ShoppingBagIcon, HeartIcon, XIcon } from "@heroicons/react/outline";
+import { XIcon } from "@heroicons/react/outline";
 
 export const CartItem = () => {
   return (
@@ -10,7 +9,11 @@ export const CartItem = () => {
         <div className=" w-28 sm:w-48 rounded-lg my-auto">
           <a href="#!">
             {/* <PlaceholderImage /> */}
-            <img className=" rounded-lg" src={process.env.PUBLIC_URL + "/assets/gilbeys-gin.jpg"} alt="" />
+            <img
+              className=" rounded-lg"
+              src={process.env.PUBLIC_URL + "/assets/gilbeys-gin.jpg"}
+              alt=""
+            />
           </a>
         </div>
         <div className="flex flex-col">
@@ -28,8 +31,8 @@ export const CartItem = () => {
             </div>
           </div>
           <div className="sm:hidden pl-6">
-          <QuantitySelector />
-        </div>
+            <QuantitySelector />
+          </div>
         </div>
       </div>
       <div className="hidden sm:block pt-6">
