@@ -56,16 +56,14 @@ export default function Navbar() {
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
-                    <a href="/"
-                    aria-label="Berny's">
+                    <a href="/" aria-label="Berny's">
                       <img
                         className="block lg:hidden h-10 w-auto"
                         src={process.env.PUBLIC_URL + "/trademark.png"}
                         alt="Berny's liquor"
                       />
                     </a>
-                    <a href="/"
-                     aria-label="Berny's">
+                    <a href="/" aria-label="Berny's">
                       <img
                         className="hidden lg:block h-10 w-auto"
                         src={process.env.PUBLIC_URL + "/logo.png"}
@@ -96,26 +94,30 @@ export default function Navbar() {
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <div className="flex items-center justify-center">
-                    <Link 
-                      to="/cart">
-                    <button
-                      type="button"
-                      className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-orange-400"
-                    >
-                      <span className="sr-only">View cart</span>
-                      <ShoppingCartIcon
-                        className="h-6 w-6 sm:h-8 sm:w-8 mx-1"
-                        aria-hidden="true"
-                      />
-                    </button>
+                    <Link to="/cart">
+                      <button
+                        type="button"
+                        className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-orange-400"
+                      >
+                        <span className="sr-only">View cart</span>
+                        <ShoppingCartIcon
+                          className="h-6 w-6 sm:h-8 sm:w-8 mx-1"
+                          aria-hidden="true"
+                        />
+                      </button>
                     </Link>
-                    <button
-                      type="button"
-                      className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-800"
-                    >
-                      <span className="sr-only">View cart</span>
-                      <HeartIcon className=" h-6 w-6 sm:h-8 sm:w-8 mx-1" aria-hidden="true" />
-                    </button>
+                    <Link to="/favorites">
+                      <button
+                        type="button"
+                        className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-800"
+                      >
+                        <span className="sr-only">View cart</span>
+                        <HeartIcon
+                          className=" h-6 w-6 sm:h-8 sm:w-8 mx-1"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
