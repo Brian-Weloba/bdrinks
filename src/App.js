@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Products from "./components/Products";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ShoppingCart } from "./components/ShoppingCart";
+import { Favorites } from "./components/Favorites";
 
 export default function App() {
   return (
@@ -17,10 +18,8 @@ export default function App() {
               path="/category/:pathCategory"
               element={<Products cat={""} />}
             />
-            <Route 
-              path="/cart" 
-              element={<ShoppingCart />} 
-            />
+            <Route path="/cart" element={<ShoppingCart />} />
+            <Route path="/favorites" element={<Favorites />} />
           </Routes>
           <Footer />
         </nav>
