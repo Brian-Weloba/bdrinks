@@ -79,7 +79,8 @@ export const Product = ({ products, loading }) => {
             </Suspense>
 
             <div className="p-6 col-span-1 flex flex-col">
-              <h5 className="text-gray-900 text-sm md:text-sm lg:text-base font-semibold mb-2 h-14 md:h-20">
+            {/* <Text numberOfLines={1} ellipsizeMode='end'}> */}
+              <h5 className="truncate text-gray-900 text-base md:text-lg lg:text-lg font-semibold mb-2 h-max">
                 {product.productName} - {optionVolume()}
               </h5>
               <div className="text-sm md:text-base lg:text-base flex flex-col xl:flex-row justify-between">
