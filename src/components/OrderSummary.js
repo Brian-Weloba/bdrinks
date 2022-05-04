@@ -3,9 +3,9 @@ import React from "react";
 
 export const OrderSummary = () => {
   return (
-    <div className="grid grid-cols-1 rounded-xl bg-zinc-200 md:w-2/5 m-2 h-max">
-      <div className="m-4 ">
-        <h1 className="font-bold text-lg">Order Summary</h1>
+    <div className="grid grid-cols-1 rounded-xl bg-zinc-200 lg:w-2/5 m-2 h-max">
+      <div className="m-4 text-xl">
+        <h1 className="font-bold">Order Summary</h1>
         <div className="grid grid-cols-2 p-4 border-b-2 border-zinc-400 ">
           <h1>Subtotal</h1>
           <h1 className="text-right pr-4 font-bold">KES 5,000</h1>

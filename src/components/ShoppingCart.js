@@ -10,8 +10,8 @@ export const ShoppingCart = () => {
         <h1 className="  text-red-800 font-bold text-center sm:text-left ml-6 text-4xl py-10  bg-transparent">
           Shopping Cart
         </h1>
-        <div className="flex flex-col sm:flex-row">
-          <div className=" border-t-2 border-zinc-800 bg-transparent md:w-3/5 m-2">
+        <div className="flex flex-col lg:flex-row">
+          <div className=" border-t-2 border-zinc-800 bg-transparent lg:w-3/5 m-2">
             <div className="grid grid-cols-1">
               <div className=" justify-center h-max">
                 <CartItem />
