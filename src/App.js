@@ -6,11 +6,13 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ShoppingCart } from "./components/ShoppingCart";
 import { Favorites } from "./components/Favorites";
 import { ProductDetails } from "./components/ProductDetails";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
     <div className="flex flex-col h-screen">
       <Router>
+        <ScrollToTop />
         <Navbar />
         <nav className="relative">
           <Routes>
