@@ -41,8 +41,8 @@ export default function Navbar() {
       <Disclosure as="nav" className="bg-zinc-800 ">
         {({ open }) => (
           <>
-            <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-              <div className="relative flex items-center justify-between h-16">
+            <div className=" mx-auto px-2 sm:px-6 lg:px-8">
+              <div className="relative flex items-center justify-between h-max">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}
                   <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-700">
@@ -54,25 +54,25 @@ export default function Navbar() {
                     )}
                   </Disclosure.Button>
                 </div>
-                <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-between">
                   <div className="flex-shrink-0 flex items-center">
                     <a href="/" aria-label="Berny's">
                       <img
-                        className="block lg:hidden h-10 w-auto"
+                        className="block lg:hidden my-2 h-14 w-auto"
                         src={process.env.PUBLIC_URL + "/trademark.png"}
                         alt="Berny's liquor"
                       />
                     </a>
                     <a href="/" aria-label="Berny's">
                       <img
-                        className="hidden lg:block h-10 w-auto"
+                        className="hidden lg:block my-2 h-14 w-auto"
                         src={process.env.PUBLIC_URL + "/logo.png"}
                         href="/"
                         alt="Berny's liquor"
                       />
                     </a>
                   </div>
-                  <div className="hidden sm:block sm:ml-6">
+                  <div className="hidden sm:block sm:ml-6 my-auto">
                     <div className="flex space-x-1">
                       {navigation.map((item) => (
                         <a
@@ -82,7 +82,7 @@ export default function Navbar() {
                             item.current
                               ? "bg-zinc-900 text-white"
                               : "text-zinc-300 hover:bg-zinc-700 hover:text-white",
-                            "px-2 py-2 rounded-md text-sm font-medium"
+                            "px-2 py-2 rounded-md text-base font-medium"
                           )}
                           aria-current={item.current ? "page" : undefined}
                         >
@@ -91,33 +91,33 @@ export default function Navbar() {
                       ))}
                     </div>
                   </div>
-                </div>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <div className="flex items-center justify-center">
-                    <Link to="/cart">
-                      <button
-                        type="button"
-                        className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-orange-400"
-                      >
-                        <span className="sr-only">View cart</span>
-                        <ShoppingCartIcon
-                          className="h-6 w-6 sm:h-8 sm:w-8 mx-1"
-                          aria-hidden="true"
-                        />
-                      </button>
-                    </Link>
-                    <Link to="/favorites">
-                      <button
-                        type="button"
-                        className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-800"
-                      >
-                        <span className="sr-only">View cart</span>
-                        <HeartIcon
-                          className=" h-6 w-6 sm:h-8 sm:w-8 mx-1"
-                          aria-hidden="true"
-                        />
-                      </button>
-                    </Link>
+                  <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <div className="flex items-center justify-center">
+                      <Link to="/cart">
+                        <button
+                          type="button"
+                          className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-orange-400"
+                        >
+                          <span className="sr-only">View cart</span>
+                          <ShoppingCartIcon
+                            className="h-6 w-6 sm:h-8 sm:w-8 mx-1"
+                            aria-hidden="true"
+                          />
+                        </button>
+                      </Link>
+                      <Link to="/favorites">
+                        <button
+                          type="button"
+                          className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-800"
+                        >
+                          <span className="sr-only">View cart</span>
+                          <HeartIcon
+                            className=" h-6 w-6 sm:h-8 sm:w-8 mx-1"
+                            aria-hidden="true"
+                          />
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
