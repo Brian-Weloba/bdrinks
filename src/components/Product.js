@@ -80,16 +80,16 @@ export const Product = ({ products, loading }) => {
 
             <div className="p-6 col-span-1 flex flex-col">
             {/* <Text numberOfLines={1} ellipsizeMode='end'}> */}
-              <h5 className="truncate text-gray-900 text-base md:text-lg lg:text-lg font-semibold mb-2 h-max">
+              <h5 className="truncate text-gray-900 text-base md:text-lg font-semibold mb-2 h-max">
                 {product.productName} - {optionVolume()}
               </h5>
               <div className="text-sm md:text-base lg:text-base flex flex-col xl:flex-row justify-between">
-                <p className="text-red-700 text-base font-medium mb-4 text-center">
+                <p className="text-red-700 text-base md:text-lg font-medium mb-4 text-center">
                   KES {optionPrice()}
                 </p>
                 <div className="flex justify-evenly mb-4">
-                  <ShoppingBagIcon className="h-5 w-5 lg:h-6 lg:w-6 pr-1 lg:pr-0  text-zinc-800 sm:hover:text-red-800"></ShoppingBagIcon>
-                  <HeartIcon className="h-5 w-5 lg:h-6 pl-1 lg:w-6 lg:pl-0 text-zinc-800 sm:hover:text-red-800"></HeartIcon>
+                  <ShoppingBagIcon className=" h-6 w-6 lg:h-7 lg:w-7 pr-1 lg:pr-0  text-zinc-800 sm:hover:text-red-800"></ShoppingBagIcon>
+                  <HeartIcon className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 sm:hover:text-red-800"></HeartIcon>
                 </div>
               </div>
               <Link
