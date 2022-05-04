@@ -82,7 +82,7 @@ export default function Navbar() {
                             item.current
                               ? "bg-zinc-900 text-white"
                               : "text-zinc-300 hover:bg-zinc-700 hover:text-white",
-                            "px-2 py-2 rounded-md text-base font-medium"
+                            "px-2 py-2 rounded-md text-lg font-medium"
                           )}
                           aria-current={item.current ? "page" : undefined}
                         >
