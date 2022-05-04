@@ -18,14 +18,14 @@ export const CartItem = () => {
         </div>
         <div className="flex flex-col">
           <div className=" pl-6 sm:pt-6 col-span-1 flex flex-col">
-            <h5 className="text-gray-900 text-sm md:text-sm lg:text-base font-semibold mb-2 ">
+            <h5 className="text-gray-900 text-base md:text-xl font-semibold mb-2 ">
               Gilbey's gin
             </h5>
-            <h5 className="text-gray-900 text-sm md:text-sm lg:text-base  mb-2 ">
+            <h5 className="text-gray-900 text-base md:text-xl  mb-2 ">
               500ml
             </h5>
-            <div className="text-sm md:text-base lg:text-base flex flex-col xl:flex-row justify-between">
-              <p className="text-red-700 text-base mb-2 sm:mb-4 font-bold">
+            <div className="flex flex-col xl:flex-row justify-between">
+              <p className="text-base md:text-xl text-red-700 mb-2 sm:mb-4 font-bold">
                 KES 1,300
               </p>
             </div>

@@ -79,11 +79,10 @@ export const Product = ({ products, loading }) => {
             </Suspense>
 
             <div className="p-6 col-span-1 flex flex-col">
-            {/* <Text numberOfLines={1} ellipsizeMode='end'}> */}
               <h5 className="truncate text-gray-900 text-base md:text-lg font-semibold mb-2 h-max">
                 {product.productName} - {optionVolume()}
               </h5>
-              <div className="text-sm md:text-base lg:text-base flex flex-col xl:flex-row justify-between">
+              <div className="flex flex-col xl:flex-row justify-between">
                 <p className="text-red-700 text-base md:text-lg font-medium mb-4 text-center">
                   KES {optionPrice()}
                 </p>
@@ -93,7 +92,7 @@ export const Product = ({ products, loading }) => {
                 </div>
               </div>
               <Link
-              className=" flex flex-col"
+                className=" flex flex-col"
                 to={{
                   pathname: `/product/${product.productId}`,
                 }}
@@ -101,7 +100,7 @@ export const Product = ({ products, loading }) => {
                 <button
                   // to={`/product/${product.productId}`}
                   type="button"
-                  className=" inline-block px-6 py-2.5 bg-red-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+                  className=" inline-block px-6 py-2.5 bg-red-800 text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out text-base md:text-lg"
                 >
                   View
                 </button>
