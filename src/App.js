@@ -5,6 +5,7 @@ import Products from "./components/Products";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ShoppingCart } from "./components/ShoppingCart";
 import { Favorites } from "./components/Favorites";
+import { ProductDetails } from "./components/ProductDetails";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
             />
             <Route path="/cart" element={<ShoppingCart />} />
             <Route path="/favorites" element={<Favorites />} />
+            <Route path="/product/:productId" element={<ProductDetails />} />
           </Routes>
           <Footer />
         </nav>
