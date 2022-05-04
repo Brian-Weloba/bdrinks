@@ -3,7 +3,7 @@ import React from "react";
 const ItemsContainer = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-4 gap-0 sm:gap-6 sm:px-8 px-5 py-10 text-center sm:text-left">
-      <div className=" col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-0 sm:pl-8 p-0 ">
+      <div className=" text:base sm:text-lg col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-0 sm:pl-8 p-0 ">
         <div className=" col-span-1 sm:col-span-2 justify-center mx-auto">
           <img
             src={process.env.PUBLIC_URL + "/logo.png"}
