@@ -76,27 +76,19 @@ export function ProductDetails() {
     );
   } else {
     return (
-      // <div className=" h-max mt-16">
-      //   <h1>{product.productName}</h1>
-      //   <div>{productOptions.map((option) => (
-      //     <h1 key={option.productOptionId}>
-      //       {option.optionVolume}
-      //     </h1>
-      //   ))}</div>
-      // </div>
-      <div className="h-max w-full flex flex-col sm:flex-row mt-16 bg-zinc-200">
-        <div className=" m-1 sm:m-6 w-full sm:w-5/12 ">
+      <div className="h-max w-full flex flex-col md:flex-row mt-16 bg-zinc-200">
+        <div className=" m-1 sm:m-6 w-max md:w-5/12 ">
           <img
             className="rounded-lg w-full"
             src={process.env.PUBLIC_URL + "/assets/" + product.productImage}
             alt={product.productName}
           />
         </div>
-        <div className="m-1 sm:m-6 bg-zinc-200 p-2 w-full sm:w-7/12">
+        <div className="m-1 sm:m-6 bg-zinc-200 p-2 w-full md:w-7/12">
           <div className="flex flex-col">
-            <div className="flex flex-col sm:flex-row justify-between mx-1 sm:mx-10">
+            <div className="flex flex-col md:flex-row justify-between mx-1 sm:mx-10">
               <h1 className="text-xl font-semibold sm:text-4xl">{product.productName}</h1>
-              <h1 className="text-xl sm:text-4xl font-semibold mt-1 sm:mt-0 sm:ml-2">KES {price}</h1>
+              <h1 className="text-xl sm:text-4xl font-semibold mt-1 md:ml-2 md:mt-4">KES {price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}</h1>
             </div>
             <RadioGroup
               value={volume}
