@@ -119,7 +119,7 @@ export function ProductDetails() {
               onChange={handleVolumeChange}
               className="mt-4 mx-1 sm:mx-10"
             >
-              <RadioGroup.Label className=" mb-2 text-lg sm:text-2xl">
+              <RadioGroup.Label className=" mb-2 text-lg sm:text-xl">
                 Choose a size:
               </RadioGroup.Label>
               <div className="mt-1 grid grid-cols-4 gap-2 sm:grid-cols-4 lg:grid-cols-8">
@@ -155,7 +155,7 @@ export function ProductDetails() {
               </div>
             </RadioGroup>
             <div className="flex flex-col m-2 mx-1 sm:mx-10">
-              <div className=" mb-2 text-lg sm:text-2xl">Quantity: </div>
+              <div className=" mb-2 text-lg sm:text-xl">Quantity: </div>
               <div className="flex">
                 <MinusIcon
                   onClick={() => {
@@ -165,25 +165,27 @@ export function ProductDetails() {
                       setQuantity(1);
                     }
                   }}
-                  className="px-2 h-10 text-red-800"
+                  className="cursor-pointer px-2 h-10 text-red-800"
                 />
-                <div className="text-xl sm:text-4xl font-semibold rounded-md bg-white w-10 text-center select-none">
-                  {quantity}
+                <div className="flex flex-col text-2xl font-semibold rounded-md bg-white w-11 text-center select-none">
+                  <p className="my-auto">{quantity}</p>
                 </div>
                 <PlusIcon
                   onClick={() => {
-                    if(quantity < 20){
-                    setQuantity(quantity + 1);
-                    }else{
+                    if (quantity < 20) {
+                      setQuantity(quantity + 1);
+                    } else {
                       setQuantity(20);
                     }
                   }}
-                  className=" px-2 h-10 text-red-800"
+                  className="cursor-pointer px-2 h-10 text-red-800"
                 />
               </div>
             </div>
             <div className="mt-4 mx-1 sm:mx-10">
-              <h1 className="text-base sm:text-xl font-bold select-none">Description</h1>
+              <h1 className="text-base sm:text-xl font-bold select-none">
+                Description
+              </h1>
               <p className="text-base sm:text-xl select-none">
                 {product.productDescription}
               </p>
