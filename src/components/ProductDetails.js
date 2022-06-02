@@ -77,7 +77,7 @@ export function ProductDetails() {
   } else {
     return (
       <div className="h-max w-full flex flex-col md:flex-row mt-16 bg-zinc-200">
-        <div className=" m-1 sm:m-6 w-max md:w-5/12 ">
+        <div className=" m-1 sm:m-6 w-screen md:w-5/12 ">
           <img
             className="rounded-lg w-full"
             src={process.env.PUBLIC_URL + "/assets/" + product.productImage}
