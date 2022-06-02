@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Product } from "./Product";
 import { useState, useEffect } from "react";
+import { MinusIcon, PlusIcon } from "@heroicons/react/outline";
 import { RadioGroup } from "@headlessui/react";
 
 export function ProductDetails() {
@@ -12,6 +13,7 @@ export function ProductDetails() {
   const [defaultOptionId, setdefaultOptionId] = useState([]);
   const [price, setPrice] = useState(0);
   const [volume, setVolume] = useState();
+  const [quantity, setQuantity] = useState(1);
   const [selectedOption, setSelectedOption] = useState([]);
 
   const { productId } = useParams();
@@ -93,7 +95,7 @@ export function ProductDetails() {
     );
   } else {
     return (
-      <div className="h-max w-full flex flex-col md:flex-row mt-16 bg-zinc-200">
+      <div className=" select-none h-max w-full flex flex-col md:flex-row mt-16 bg-zinc-200">
         <div className=" m-1 sm:m-6 w-screen md:w-5/12 ">
           <img
             className="rounded-lg w-full"
@@ -117,10 +119,10 @@ export function ProductDetails() {
               onChange={handleVolumeChange}
               className="mt-4 mx-1 sm:mx-10"
             >
-              <RadioGroup.Label className="text-lg sm:text-2xl">
+              <RadioGroup.Label className=" mb-2 text-lg sm:text-2xl">
                 Choose a size:
               </RadioGroup.Label>
-              <div className="grid grid-cols-4 gap-2 sm:grid-cols-4 lg:grid-cols-8">
+              <div className="mt-1 grid grid-cols-4 gap-2 sm:grid-cols-4 lg:grid-cols-8">
                 {productOptions.map((option) => (
                   <RadioGroup.Option
                     key={option.productOptionId}
@@ -141,7 +143,7 @@ export function ProductDetails() {
                         <div
                           className={classNames(
                             active ? "border" : "border-2",
-                            checked ? "border-red-800" : "border-transparent",
+                            checked ? "border-red-800 " : "border-transparent",
                             "absolute -inset-px rounded-md pointer-events-none"
                           )}
                           aria-hidden="true"
@@ -152,16 +154,44 @@ export function ProductDetails() {
                 ))}
               </div>
             </RadioGroup>
+            <div className="flex flex-col m-2 mx-1 sm:mx-10">
+              <div className=" mb-2 text-lg sm:text-2xl">Quantity: </div>
+              <div className="flex">
+                <MinusIcon
+                  onClick={() => {
+                    if (quantity > 1) {
+                      setQuantity(quantity - 1);
+                    } else {
+                      setQuantity(1);
+                    }
+                  }}
+                  className="px-2 h-10 text-red-800"
+                />
+                <div className="text-xl sm:text-4xl font-semibold rounded-md bg-white w-10 text-center select-none">
+                  {quantity}
+                </div>
+                <PlusIcon
+                  onClick={() => {
+                    if(quantity < 20){
+                    setQuantity(quantity + 1);
+                    }else{
+                      setQuantity(20);
+                    }
+                  }}
+                  className=" px-2 h-10 text-red-800"
+                />
+              </div>
+            </div>
             <div className="mt-4 mx-1 sm:mx-10">
-              <h1 className="text-base sm:text-xl font-bold">Description</h1>
-              <p className="text-base sm:text-xl">
+              <h1 className="text-base sm:text-xl font-bold select-none">Description</h1>
+              <p className="text-base sm:text-xl select-none">
                 {product.productDescription}
               </p>
             </div>
             <div className="w-full flex justify-center md:justify-end">
               <button
                 type="submit"
-                className=" md:mx-1 sm:mx-10 mt-10 w-11/12 md:w-1/2 bg-red-800 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base sm:text-xl font-medium text-white hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700"
+                className="select-none md:mx-1 sm:mx-10 mt-10 w-11/12 md:w-1/2 bg-red-800 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base sm:text-xl font-medium text-white hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700"
               >
                 Add to basket
               </button>
