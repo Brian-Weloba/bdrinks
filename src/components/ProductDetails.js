@@ -11,7 +11,7 @@ export function ProductDetails() {
   const [productOptions, setProductOptions] = useState([]);
   const [defaultOptionId, setdefaultOptionId] = useState([]);
   const [price, setPrice] = useState(0);
-  const [volume, setVolume] = useState(0);
+  const [volume, setVolume] = useState();
   const [selectedOption, setSelectedOption] = useState([]);
 
   const { productId } = useParams();
@@ -47,6 +47,23 @@ export function ProductDetails() {
 
   console.log(product);
   console.log(productOptions);
+
+  const handleVolumeChange = (value) => {
+    //get value from radio group
+    let selectedOption = value;
+    console.log("Selected Option: " + selectedOption);
+    //get the price of the selected option
+    let selectedOptionPrice = productOptions.find(
+      (option) => option.productOptionId === selectedOption
+    ).productOptionPrice;
+    //get the volume of the selected option
+    let selectedOptionVolume = productOptions.find(
+      (option) => option.productOptionId === selectedOption
+    ).optionVolume;
+    //set the price and volume
+    setPrice(selectedOptionPrice);
+    setVolume(selectedOptionVolume);
+  };
 
   if (loading) {
     return (
@@ -87,12 +104,17 @@ export function ProductDetails() {
         <div className="m-1 sm:m-6 bg-zinc-200 p-2 w-full md:w-7/12">
           <div className="flex flex-col">
             <div className="flex flex-col md:flex-row justify-between mx-1 sm:mx-10">
-              <h1 className="text-xl font-semibold sm:text-4xl">{product.productName}</h1>
-              <h1 className="text-xl sm:text-4xl font-semibold mt-1 md:ml-2 md:mt-4">KES {price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}</h1>
+              <h1 className="text-xl font-semibold sm:text-4xl mt-1 md:mt-4">
+                {product.productName}-{volume}
+              </h1>
+              <h1 className="text-xl sm:text-4xl font-semibold mt-1 md:ml-2 md:mt-4">
+                KES{" "}
+                {price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+              </h1>
             </div>
             <RadioGroup
               value={volume}
-              onChange={setVolume}
+              onChange={handleVolumeChange}
               className="mt-4 mx-1 sm:mx-10"
             >
               <RadioGroup.Label className="text-lg sm:text-2xl">
@@ -101,8 +123,8 @@ export function ProductDetails() {
               <div className="grid grid-cols-4 gap-2 sm:grid-cols-4 lg:grid-cols-8">
                 {productOptions.map((option) => (
                   <RadioGroup.Option
-                    key={option.optionVolume}
-                    value={option.optionVolume}
+                    key={option.productOptionId}
+                    value={option.productOptionId}
                     className={({ active }) =>
                       classNames(
                         "bg-white shadow-sm text-gray-900 cursor-pointer",
@@ -119,9 +141,7 @@ export function ProductDetails() {
                         <div
                           className={classNames(
                             active ? "border" : "border-2",
-                            checked
-                              ? "border-red-800"
-                              : "border-transparent",
+                            checked ? "border-red-800" : "border-transparent",
                             "absolute -inset-px rounded-md pointer-events-none"
                           )}
                           aria-hidden="true"
@@ -134,12 +154,14 @@ export function ProductDetails() {
             </RadioGroup>
             <div className="mt-4 mx-1 sm:mx-10">
               <h1 className="text-base sm:text-xl font-bold">Description</h1>
-              <p className="text-base sm:text-xl">{product.productDescription}</p>
+              <p className="text-base sm:text-xl">
+                {product.productDescription}
+              </p>
             </div>
-            <div className="w-full flex justify-end">
+            <div className="w-full flex justify-center md:justify-end">
               <button
                 type="submit"
-                className=" mx-1 sm:mx-10 mt-10 w-1/2 bg-red-800 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base sm:text-xl font-medium text-white hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700"
+                className=" md:mx-1 sm:mx-10 mt-10 w-11/12 md:w-1/2 bg-red-800 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base sm:text-xl font-medium text-white hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700"
               >
                 Add to basket
               </button>
