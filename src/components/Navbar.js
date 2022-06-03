@@ -1,6 +1,6 @@
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { ShoppingCartIcon, HeartIcon } from "@heroicons/react/solid";
+import { ShoppingCartIcon, HeartIcon } from "@heroicons/react/outline";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -96,7 +96,7 @@ export default function Navbar() {
                       <Link to="/cart">
                         <button
                           type="button"
-                          className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-orange-400"
+                          className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-600"
                         >
                           <span className="sr-only">View cart</span>
                           <ShoppingCartIcon
@@ -108,7 +108,7 @@ export default function Navbar() {
                       <Link to="/favorites">
                         <button
                           type="button"
-                          className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-800"
+                          className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-600"
                         >
                           <span className="sr-only">View cart</span>
                           <HeartIcon
