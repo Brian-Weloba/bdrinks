@@ -1,12 +1,20 @@
-import { HeartIcon, ShoppingBagIcon } from "@heroicons/react/outline";
+import {
+  HeartIcon,
+  ShoppingBagIcon,
+  FavoriteIcon,
+} from "@heroicons/react/outline";
+import { HeartIcon as HeartIconSolid } from "@heroicons/react/solid";
 import React, { Suspense } from "react";
 import { Link } from "react-router-dom";
 import { PlaceholderImage } from "./PlaceholderImage";
+import { useCookies } from "react-cookie";
 
 export const Product = ({ products, loading }) => {
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const imageStyle = !imageLoaded ? { display: "none" } : {};
   const [show, setShow] = React.useState((state) => !state, true);
+  //add cookies for favorites and cartItems
+  const [cookies, setCookie] = useCookies(["favorites", "cartItems"]);
 
   if (loading) {
     return (
@@ -60,6 +68,90 @@ export const Product = ({ products, loading }) => {
         }
       };
 
+      const addOrRemoveFavorites = (prod) => {
+        //toggle favorite cookie
+        const productId = prod.productId;
+        //toggle favorite cookie
+        const favorites = cookies.favorites;
+        if (favorites === undefined) {
+          setCookie("favorites", [productId], { path: "/" });
+        }
+        if (favorites.includes(productId)) {
+          const newFavorites = favorites.filter((fav) => fav !== productId);
+          setCookie("favorites", newFavorites, { path: "/" });
+        }
+        if (!favorites.includes(productId)) {
+          const newFavorites = [...favorites, productId];
+          setCookie("favorites", newFavorites, { path: "/" });
+        }
+      };
+
+      const addToCart = (prod) => {
+        console.log(prod);
+        if (cookies.cartItems === undefined || cookies.cartItems.length === 0) {
+          setCookie(
+            "cartItems",
+            [
+              {
+                productName: prod.productName,
+                productId: prod.productId,
+                productOptionId: prod.defaultOption,
+                productOptionPrice: optionPrice(),
+                productOptionVolume: optionVolume(),
+                productOptionQuantity: 1,
+                productOptionImage: prod.productImage,
+              },
+            ],
+            { path: "/" }
+          );
+        } else {
+          const newCart = cookies.cartItems;
+          const newProduct = newCart.find(
+            (product) => product.productId === prod.productId
+          );
+          if (newProduct === undefined) {
+            newCart.push({
+              productName: prod.productName,
+              productId: prod.productId,
+              productOptionId: prod.defaultOption,
+              productOptionPrice: optionPrice(),
+              productOptionVolume: optionVolume(),
+              productOptionQuantity: 1,
+              productOptionImage: prod.productImage,
+            });
+          } else {
+            newProduct.productOptionQuantity += 1;
+          }
+          setCookie("cartItems", newCart, { path: "/" });
+        }
+      };
+
+      // if (cookies.cartItems === undefined || cookies.cartItems.length === 0) {
+      //   setCookie(
+      //     "cartItems",
+      //     [
+      //       {
+      //         productId: product.productId,
+      //         productOptionId: product.defaultOption,
+      //         productOptionPrice: optionPrice(),
+      //         productOptionVolume: optionVolume(),
+      //         productOptionQuantity: 1,
+      //       },
+      //     ],
+      //     { path: "/" }
+      //   );
+      // } else {
+      //   const newCart = cookies.cartItems;
+      //   newCart.push({
+      //     productId: product.productId,
+      //     productOptionId: product.defaultOption,
+      //     productOptionPrice: optionPrice(),
+      //     productOptionVolume: optionVolume(),
+      //     productOptionQuantity: 1,
+      //   });
+      //   setCookie("cartItems", newCart, { path: "/" });
+      // }
+
       return (
         <div className=" justify-center h-max" key={index}>
           <div className="bg-white max-w-sm border-zinc-300 border-2">
@@ -87,8 +179,36 @@ export const Product = ({ products, loading }) => {
                   KES {optionPrice()}
                 </p>
                 <div className="flex justify-evenly mb-4">
-                  <ShoppingBagIcon className=" h-6 w-6 lg:h-7 lg:w-7 pr-1 lg:pr-0  text-zinc-800 sm:hover:text-red-800"></ShoppingBagIcon>
-                  <HeartIcon className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 sm:hover:text-red-800"></HeartIcon>
+                  <ShoppingBagIcon
+                    className=" h-6 w-6 lg:h-7 lg:w-7 pr-1 lg:pr-0  text-zinc-800 sm:hover:text-red-800"
+                    onClick={() => {
+                      addToCart(product);
+                    }}
+                  ></ShoppingBagIcon>
+                  {cookies.favorites !== undefined &&
+                    cookies.favorites.includes(product.productId) && (
+                      <HeartIconSolid
+                        className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-red-800 sm:hover:text-red-800"
+                        onClick={() => {
+                          addOrRemoveFavorites(product);
+                        }}
+                      ></HeartIconSolid>
+                    )}
+                  {cookies.favorites !== undefined &&
+                    cookies.favorites.includes(product.productId) === false && (
+                      <HeartIcon
+                        className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 sm:hover:text-red-800"
+                        onClick={() => {
+                          addOrRemoveFavorites(product);
+                        }}
+                      ></HeartIcon>
+                    )}
+                  {/* <HeartIcon
+                    className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 sm:hover:text-red-800"
+                    onClick={() => {
+                      addOrRemoveFavorites(product);
+                    }}
+                  ></HeartIcon> */}
                 </div>
               </div>
               <Link
