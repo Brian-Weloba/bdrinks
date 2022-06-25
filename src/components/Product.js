@@ -16,6 +16,9 @@ export const Product = ({ products, loading }) => {
   //add cookies for favorites and cartItems
   const [cookies, setCookie] = useCookies(["favorites", "cartItems"]);
 
+  const favorites = cookies.favorites;
+  console.log(favorites);
+
   if (loading) {
     return (
       <div className="h-2/3 flex justify-center col-span-full ">
@@ -196,6 +199,15 @@ export const Product = ({ products, loading }) => {
                     )}
                   {cookies.favorites !== undefined &&
                     cookies.favorites.includes(product.productId) === false && (
+                      <HeartIcon
+                        className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 sm:hover:text-red-800"
+                        onClick={() => {
+                          addOrRemoveFavorites(product);
+                        }}
+                      ></HeartIcon>
+                    )}
+
+                  {cookies.favorites === undefined &&(
                       <HeartIcon
                         className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 sm:hover:text-red-800"
                         onClick={() => {
