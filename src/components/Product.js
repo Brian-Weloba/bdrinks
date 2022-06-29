@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { PlaceholderImage } from "./PlaceholderImage";
 import { useCookies } from "react-cookie";
 
-export default function Product ({ products, loading }) {
+export default function Product({ products, loading }) {
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const imageStyle = !imageLoaded ? { display: "none" } : {};
   const [show, setShow] = React.useState((state) => !state, true);
@@ -78,14 +78,15 @@ export default function Product ({ products, loading }) {
         const favorites = cookies.favorites;
         if (favorites === undefined) {
           setCookie("favorites", [productId], { path: "/" });
-        }
-        if (favorites.includes(productId)) {
-          const newFavorites = favorites.filter((fav) => fav !== productId);
-          setCookie("favorites", newFavorites, { path: "/" });
-        }
-        if (!favorites.includes(productId)) {
-          const newFavorites = [...favorites, productId];
-          setCookie("favorites", newFavorites, { path: "/" });
+        } else {
+          if (favorites.includes(productId)) {
+            const newFavorites = favorites.filter((fav) => fav !== productId);
+            setCookie("favorites", newFavorites, { path: "/" });
+          }
+          if (!favorites.includes(productId)) {
+            const newFavorites = [...favorites, productId];
+            setCookie("favorites", newFavorites, { path: "/" });
+          }
         }
       };
 
@@ -207,14 +208,14 @@ export default function Product ({ products, loading }) {
                       ></HeartIcon>
                     )}
 
-                  {cookies.favorites === undefined &&(
-                      <HeartIcon
-                        className="h-6 w-6  pl-1  lg:pl-0 text-zinc-800 sm:hover:text-red-800"
-                        onClick={() => {
-                          addOrRemoveFavorites(product);
-                        }}
-                      ></HeartIcon>
-                    )}
+                  {cookies.favorites === undefined && (
+                    <HeartIcon
+                      className="h-6 w-6  pl-1  lg:pl-0 text-zinc-800 sm:hover:text-red-800"
+                      onClick={() => {
+                        addOrRemoveFavorites(product);
+                      }}
+                    ></HeartIcon>
+                  )}
                   {/* <HeartIcon
                     className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 sm:hover:text-red-800"
                     onClick={() => {
@@ -243,4 +244,4 @@ export default function Product ({ products, loading }) {
       );
     });
   }
-};
+}
