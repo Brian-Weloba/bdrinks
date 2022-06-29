@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { PlaceholderImage } from "./PlaceholderImage";
 import { useCookies } from "react-cookie";
 
-export const Product = ({ products, loading }) => {
+export default function Product ({ products, loading }) {
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const imageStyle = !imageLoaded ? { display: "none" } : {};
   const [show, setShow] = React.useState((state) => !state, true);
@@ -174,16 +174,16 @@ export const Product = ({ products, loading }) => {
             </Suspense>
 
             <div className="p-6 col-span-1 flex flex-col">
-              <h5 className="truncate text-gray-900 text-base md:text-lg font-semibold mb-2 h-max">
+              <h5 className="truncate text-gray-900 text-base font-semibold mb-2 h-max">
                 {product.productName} - {optionVolume()}
               </h5>
               <div className="flex flex-col xl:flex-row justify-between">
-                <p className="text-red-700 text-base md:text-lg font-medium mb-4 text-center">
+                <p className="text-red-700 text-base  font-medium mb-4 text-center">
                   KES {optionPrice()}
                 </p>
                 <div className="flex justify-evenly mb-4">
                   <ShoppingBagIcon
-                    className=" h-6 w-6 lg:h-7 lg:w-7 pr-1 lg:pr-0  text-zinc-800 sm:hover:text-red-800"
+                    className=" h-6 w-6 pr-1 lg:pr-0  text-zinc-800 sm:hover:text-red-800"
                     onClick={() => {
                       addToCart(product);
                     }}
@@ -191,7 +191,7 @@ export const Product = ({ products, loading }) => {
                   {cookies.favorites !== undefined &&
                     cookies.favorites.includes(product.productId) && (
                       <HeartIconSolid
-                        className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-red-800 sm:hover:text-red-800"
+                        className="h-6 w-6  lg:pl-0 text-red-800 sm:hover:text-red-800"
                         onClick={() => {
                           addOrRemoveFavorites(product);
                         }}
@@ -200,7 +200,7 @@ export const Product = ({ products, loading }) => {
                   {cookies.favorites !== undefined &&
                     cookies.favorites.includes(product.productId) === false && (
                       <HeartIcon
-                        className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 sm:hover:text-red-800"
+                        className="h-6 w-6  pl-1  lg:pl-0 text-zinc-800 sm:hover:text-red-800"
                         onClick={() => {
                           addOrRemoveFavorites(product);
                         }}
@@ -209,7 +209,7 @@ export const Product = ({ products, loading }) => {
 
                   {cookies.favorites === undefined &&(
                       <HeartIcon
-                        className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 sm:hover:text-red-800"
+                        className="h-6 w-6  pl-1  lg:pl-0 text-zinc-800 sm:hover:text-red-800"
                         onClick={() => {
                           addOrRemoveFavorites(product);
                         }}
