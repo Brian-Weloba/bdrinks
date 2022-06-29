@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { MinusIcon, PlusIcon } from "@heroicons/react/outline";
 import { RadioGroup } from "@headlessui/react";
 
-export function ProductDetails() {
+export default function ProductDetails() {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   const [productOptions, setProductOptions] = useState([]);
@@ -45,7 +45,7 @@ export function ProductDetails() {
       setLoading(false);
     };
     fetchProducts();
-  }, []);
+  }, [productId]);
 
   console.log(product);
   console.log(productOptions);
@@ -106,10 +106,10 @@ export function ProductDetails() {
         <div className="m-1 sm:m-6 bg-zinc-200 p-2 w-full md:w-7/12">
           <div className="flex flex-col">
             <div className="flex flex-col md:flex-row justify-between mx-1 sm:mx-10">
-              <h1 className="text-xl font-semibold sm:text-4xl mt-1 md:mt-4">
+              <h1 className="text-xl font-semibold sm:text-2xl mt-1 md:mt-4">
                 {product.productName}-{volume}
               </h1>
-              <h1 className="text-xl sm:text-4xl font-semibold mt-1 md:ml-2 md:mt-4">
+              <h1 className="text-xl sm:text-2xl font-semibold mt-1 md:ml-2 md:mt-4">
                 KES{" "}
                 {price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
               </h1>
@@ -119,7 +119,7 @@ export function ProductDetails() {
               onChange={handleVolumeChange}
               className="mt-4 mx-1 sm:mx-10"
             >
-              <RadioGroup.Label className=" mb-2 text-lg sm:text-xl">
+              <RadioGroup.Label className=" mb-2 text-lg">
                 Choose a size:
               </RadioGroup.Label>
               <div className="mt-1 grid grid-cols-4 gap-2 sm:grid-cols-4 lg:grid-cols-8">
@@ -131,7 +131,7 @@ export function ProductDetails() {
                       classNames(
                         "bg-white shadow-sm text-gray-900 cursor-pointer",
                         active ? "ring-2 ring-red-800" : "",
-                        "group relative border rounded-md py-3 px-4 flex items-center justify-center text-base sm:text-lg font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-4"
+                        "group relative border rounded-md py-3 px-4 flex items-center justify-center text-base font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-4"
                       )
                     }
                   >
@@ -155,7 +155,7 @@ export function ProductDetails() {
               </div>
             </RadioGroup>
             <div className="flex flex-col m-2 mx-1 sm:mx-10">
-              <div className=" mb-2 text-lg sm:text-xl">Quantity: </div>
+              <div className=" mb-2 text-lg ">Quantity: </div>
               <div className="flex">
                 <MinusIcon
                   onClick={() => {
@@ -165,9 +165,9 @@ export function ProductDetails() {
                       setQuantity(1);
                     }
                   }}
-                  className="cursor-pointer px-2 h-10 text-red-800"
+                  className="cursor-pointer px-2 h-7 text-red-800"
                 />
-                <div className="flex flex-col text-2xl font-semibold rounded-md bg-white w-11 text-center select-none">
+                <div className="flex flex-col text-xl font-semibold rounded-md bg-white w-11 text-center select-none">
                   <p className="my-auto">{quantity}</p>
                 </div>
                 <PlusIcon
@@ -178,22 +178,22 @@ export function ProductDetails() {
                       setQuantity(20);
                     }
                   }}
-                  className="cursor-pointer px-2 h-10 text-red-800"
+                  className="cursor-pointer px-2 h-7 text-red-800"
                 />
               </div>
             </div>
             <div className="mt-4 mx-1 sm:mx-10">
-              <h1 className="text-base sm:text-xl font-bold select-none">
+              <h1 className="text-base font-bold select-none">
                 Description
               </h1>
-              <p className="text-base sm:text-xl select-none">
+              <p className="text-base select-none">
                 {product.productDescription}
               </p>
             </div>
             <div className="w-full flex justify-center md:justify-end">
               <button
                 type="submit"
-                className="select-none md:mx-1 sm:mx-10 mt-10 w-11/12 md:w-1/2 bg-red-800 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base sm:text-xl font-medium text-white hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700"
+                className="select-none md:mx-1 sm:mx-10 mt-10 w-11/12 md:w-1/3 bg-red-800 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700"
               >
                 Add to basket
               </button>
