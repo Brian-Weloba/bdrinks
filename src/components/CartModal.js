@@ -126,30 +126,6 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
     });
   };
 
-  const addToCart = (prod) => {
-    console.log(prod);
-    if (cookies.cartItems === undefined || cookies.cartItems.length === 0) {
-    } else {
-      const newCart = cookies.cartItems;
-      const newProduct = newCart.find(
-        (product) => product.productId === prod.productId
-      );
-      if (newProduct === undefined) {
-        newCart.push({
-          productName: prod.productName,
-          productId: prod.productId,
-          productOptionId: prod.defaultOption,
-          productOptionPrice: price,
-          productOptionVolume: volume,
-          productOptionQuantity: 1,
-          productOptionImage: prod.productImage,
-        });
-      } else {
-        newProduct.productOptionQuantity += 1;
-      }
-      setCookie("cartItems", newCart, { path: "/" });
-    }
-  };
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
