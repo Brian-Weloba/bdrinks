@@ -5,6 +5,8 @@ import { Product } from "./Product";
 import { useState, useEffect } from "react";
 import { MinusIcon, PlusIcon } from "@heroicons/react/outline";
 import { RadioGroup } from "@headlessui/react";
+import { useCookies } from "react-cookie";
+import {toast} from "react-toastify";
 
 export default function ProductDetails() {
   const [product, setProduct] = useState([]);
@@ -15,6 +17,7 @@ export default function ProductDetails() {
   const [volume, setVolume] = useState();
   const [quantity, setQuantity] = useState(1);
   const [selectedOption, setSelectedOption] = useState([]);
+  const [cookies, setCookie] = useCookies("cartItems");
 
   const { productId } = useParams();
 
@@ -47,8 +50,106 @@ export default function ProductDetails() {
     fetchProducts();
   }, [productId]);
 
-  console.log(product);
-  console.log(productOptions);
+  // console.log(product);
+  // console.log(productOptions);
+
+  const handleAddToCart = () => {
+    // if cartItems doesnt exist
+    if (
+      cookies.cartItems === undefined ||
+      cookies.cartItems === null ||
+      cookies.cartItems.length === 0
+    ) {
+      // set a new cookie
+      setCookie(
+        "cartItems",
+        [
+          {
+            productId: product.productId,
+            productName: product.productName,
+            productImage: product.productImage,
+            productPrice: price,
+            productVolume: volume,
+            quantity: quantity,
+          },
+        ],
+        { path: "/" }
+      );
+    } else {
+      // if cartItems exists check if product already exists
+      let cartItems = cookies.cartItems;
+      let newCartItem = cartItems.find(
+        (item) => item.productId === product.productId
+      );
+
+      //if the product does not exist in the cart add it to cart.
+      if (newCartItem === undefined || newCartItem === null) {
+        cartItems.push({
+          productId: product.productId,
+          productName: product.productName,
+          productImage: product.productImage,
+          productPrice: price,
+          productVolume: volume,
+          quantity: quantity,
+        });
+      } else {
+        //if product exists check all the products in the cart with the same productId
+        let cartItemsWithSameProductId = cartItems.filter(
+          (item) => item.productId === product.productId
+        );
+        //if there is only one product in the cart with the same productId
+        if (cartItemsWithSameProductId.length === 1) {
+          //check if the volume is the same
+          if (cartItemsWithSameProductId[0].productVolume === volume) {
+          newCartItem.quantity += quantity;
+          }
+          //if the volume is different
+          else {
+            //add new product to cart
+            cartItems.push({
+              productId: product.productId,
+              productName: product.productName,
+              productImage: product.productImage,
+              productPrice: price,
+              productVolume: volume,
+              quantity: quantity,
+            });
+          }
+        } else {
+          //if there are more than one product with the same productId check if the new product volume is the same as the existing product volume
+          let productWithSameVolume = cartItemsWithSameProductId.find(
+            (item) => item.productVolume === volume
+          );
+          //if the product volume is the same as the existing product volume
+          if (productWithSameVolume !== undefined) {
+            //add the new quantity to the existing product
+            productWithSameVolume.quantity += quantity;
+          } else {
+            //if the product volume is different add the new product to the cart
+            cartItems.push({
+              productId: product.productId,
+              productName: product.productName,
+              productImage: product.productImage,
+              productPrice: price,
+              productVolume: volume,
+              quantity: quantity,
+            });
+          }
+        }
+      }
+      setCookie("cartItems", cartItems, { path: "/" });
+    }
+    toast.success("Added to Cart!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
 
   const handleVolumeChange = (value) => {
     //get value from radio group
@@ -190,6 +291,9 @@ export default function ProductDetails() {
             </div>
             <div className="w-full flex justify-center md:justify-end">
               <button
+              onClick={() => {
+                handleAddToCart();
+              }}
                 type="submit"
                 className="select-none md:mx-1 sm:mx-10 mt-10 w-11/12 md:w-1/3 bg-red-800 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700"
               >
