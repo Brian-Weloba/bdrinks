@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { PlaceholderImage } from "./PlaceholderImage";
 import { useCookies } from "react-cookie";
 
-export default function Product({ products, loading }) {
+export default function Product({ isOpen, setIsOpen, getSelectedProduct , products, loading }) {
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const imageStyle = !imageLoaded ? { display: "none" } : {};
   const [show, setShow] = React.useState((state) => !state, true);
@@ -182,13 +182,21 @@ export default function Product({ products, loading }) {
                 <p className="text-red-700 text-base  font-medium mb-4 text-center">
                   KES {optionPrice()}
                 </p>
+
                 <div className="flex justify-evenly mb-4">
                   <ShoppingBagIcon
                     className=" h-6 w-6 pr-1 lg:pr-0  text-zinc-800 sm:hover:text-red-800"
                     onClick={() => {
-                      addToCart(product);
+                      getSelectedProduct(product);
+                      //if isopen is false, open the modal
+                      if (!isOpen) {
+                        setIsOpen(true);
+                      }else{
+                        setIsOpen(false);
+                      }
                     }}
                   ></ShoppingBagIcon>
+
                   {cookies.favorites !== undefined &&
                     cookies.favorites.includes(product.productId) && (
                       <HeartIconSolid

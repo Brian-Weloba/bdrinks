@@ -98,7 +98,7 @@ export default function ProductDetails() {
       <div className=" select-none h-max w-full flex flex-col md:flex-row mt-16 bg-zinc-200">
         <div className=" m-1 sm:m-6 w-screen md:w-5/12 ">
           <img
-            className="rounded-lg w-full"
+            className="rounded-lg w-full border-2 border-red-800"
             src={process.env.PUBLIC_URL + "/assets/" + product.productImage}
             alt={product.productName}
           />
@@ -183,9 +183,7 @@ export default function ProductDetails() {
               </div>
             </div>
             <div className="mt-4 mx-1 sm:mx-10">
-              <h1 className="text-base font-bold select-none">
-                Description
-              </h1>
+              <h1 className="text-base font-bold select-none">Description</h1>
               <p className="text-base select-none">
                 {product.productDescription}
               </p>
