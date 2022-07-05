@@ -293,6 +293,7 @@ export default function ProductDetails() {
               <button
               onClick={() => {
                 handleAddToCart();
+                setQuantity(1);
               }}
                 type="submit"
                 className="select-none md:mx-1 sm:mx-10 mt-10 w-11/12 md:w-1/3 bg-red-800 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700"
