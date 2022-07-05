@@ -3,10 +3,11 @@ import { RadioGroup } from "@headlessui/react";
 import { MinusIcon, PlusIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 
 export default function CartModal({ setIsOpen, selectedProduct }) {
   const [quantity, setQuantity] = useState(1);
-
   const product = selectedProduct;
   const productOptions = product.productOptions;
   const defaultPrice = productOptions.find(
@@ -15,22 +16,10 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
   const defaultVolume = productOptions.find(
     (option) => option.productOptionId === product.defaultOption
   ).optionVolume;
-
   const [price, setPrice] = useState(defaultPrice);
   const [volume, setVolume] = useState(defaultVolume);
   const [total, setTotal] = useState(price);
-
-  const handleQuantityChange = (value) => {
-    setQuantity(value);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
-  const handlePriceChange = (value) => {
-    setPrice(value);
-  };
+  const [cookies, setCookie] = useCookies(["cartItems"]);
 
   function getTotalPrice(quantity, price) {
     let totalPrice = quantity * price;
@@ -39,8 +28,127 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
   }
 
   const handleAddToCart = () => {
-    console.log("Added to cart");
+    // if cartItems doesnt exist
+    if (
+      cookies.cartItems === undefined ||
+      cookies.cartItems === null ||
+      cookies.cartItems.length === 0
+    ) {
+      // set a new cookie
+      setCookie(
+        "cartItems",
+        [
+          {
+            productId: product.productId,
+            productName: product.productName,
+            productImage: product.productImage,
+            productPrice: price,
+            productVolume: volume,
+            quantity: quantity,
+          },
+        ],
+        { path: "/" }
+      );
+    } else {
+      // if cartItems exists check if product already exists
+      let cartItems = cookies.cartItems;
+      let newCartItem = cartItems.find(
+        (item) => item.productId === product.productId
+      );
+
+      //if the product does not exist in the cart add it to cart.
+      if (newCartItem === undefined || newCartItem === null) {
+        cartItems.push({
+          productId: product.productId,
+          productName: product.productName,
+          productImage: product.productImage,
+          productPrice: price,
+          productVolume: volume,
+          quantity: quantity,
+        });
+      } else {
+        //if product exists check all the products in the cart with the same productId
+        let cartItemsWithSameProductId = cartItems.filter(
+          (item) => item.productId === product.productId
+        );
+        //if there is only one product in the cart with the same productId
+        if (cartItemsWithSameProductId.length === 1) {
+          //check if the volume is the same
+          if (cartItemsWithSameProductId[0].productVolume === volume) {
+          newCartItem.quantity += quantity;
+          }
+          //if the volume is different
+          else {
+            //add new product to cart
+            cartItems.push({
+              productId: product.productId,
+              productName: product.productName,
+              productImage: product.productImage,
+              productPrice: price,
+              productVolume: volume,
+              quantity: quantity,
+            });
+          }
+        } else {
+          //if there are more than one product with the same productId check if the new product volume is the same as the existing product volume
+          let productWithSameVolume = cartItemsWithSameProductId.find(
+            (item) => item.productVolume === volume
+          );
+          //if the product volume is the same as the existing product volume
+          if (productWithSameVolume !== undefined) {
+            //add the new quantity to the existing product
+            productWithSameVolume.quantity += quantity;
+          } else {
+            //if the product volume is different add the new product to the cart
+            cartItems.push({
+              productId: product.productId,
+              productName: product.productName,
+              productImage: product.productImage,
+              productPrice: price,
+              productVolume: volume,
+              quantity: quantity,
+            });
+          }
+        }
+      }
+      setCookie("cartItems", cartItems, { path: "/" });
+    }
     setIsOpen(false);
+    toast.success("Added to Cart!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
+  const addToCart = (prod) => {
+    console.log(prod);
+    if (cookies.cartItems === undefined || cookies.cartItems.length === 0) {
+    } else {
+      const newCart = cookies.cartItems;
+      const newProduct = newCart.find(
+        (product) => product.productId === prod.productId
+      );
+      if (newProduct === undefined) {
+        newCart.push({
+          productName: prod.productName,
+          productId: prod.productId,
+          productOptionId: prod.defaultOption,
+          productOptionPrice: price,
+          productOptionVolume: volume,
+          productOptionQuantity: 1,
+          productOptionImage: prod.productImage,
+        });
+      } else {
+        newProduct.productOptionQuantity += 1;
+      }
+      setCookie("cartItems", newCart, { path: "/" });
+    }
   };
 
   function classNames(...classes) {
@@ -70,7 +178,7 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
     <div className="fixed inset-0 z-50 overflow-auto flex items-center justify-center  bg-gray-900 bg-opacity-50">
       <div className="max-w-lg w-full bg-white rounded-lg shadow-lg overflow-y-auto">
         <div className=" flex justify-between border-b-2 border-red-800 p-3">
-          <h3 className="text-lg leading-6 font-semibold text-gray-900">
+          <h3 className="text-lg leading-6 font-semibold text-gray-900 select-none">
             ADD TO CART
           </h3>
           <div className="flex items-center justify-end">
@@ -100,13 +208,16 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
         </div>
         <div className="flex flex-col ml-4 p-3">
           <div className="flex flex-col">
-            <h1 className="text-lg font-medium">{product.productName} - {volume} @ KSH {price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}</h1>
+            <h1 className="text-lg font-medium">
+              {product.productName} - {volume} @ KSH{" "}
+              {price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+            </h1>
             <RadioGroup
               value={volume}
               onChange={handleVolumeChange}
               className="mt-4 mx-2 sm:mx-4"
             >
-              <RadioGroup.Label className=" mb-2 text-lg">
+              <RadioGroup.Label className=" mb-2 text-lg select-none">
                 Choose a size:
               </RadioGroup.Label>
               <div className="mt-1 grid grid-cols-3 gap-2 sm:grid-cols-3 lg:grid-cols-6">
@@ -143,7 +254,7 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
             </RadioGroup>
 
             <div className="flex flex-col mt-4 mx-1 sm:mx-4">
-              <div className=" mb-2 text-lg ">Quantity: </div>
+              <div className=" mb-2 text-lg select-none">Quantity: </div>
               <div className="flex">
                 <MinusIcon
                   onClick={() => {
@@ -181,22 +292,15 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
             </h1>
           </div>
           <div>
-            <Link
-              className=" flex flex-col"
-              to={
-                {
-                  // pathname: `/product/${product.productId}`,
-                }
-              }
+            <button
+              onClick={() => {
+                handleAddToCart();
+              }}
+              type="button"
+              className="select-none inline-block px-6 py-3 sm:py-2 border-2 border-red-800 text-red-800 hover:text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-red-800  hover:shadow-lg   transition duration-150 ease-in-out text-base md:text-lg"
             >
-              <button
-                // to={`/product/${product.productId}`}
-                type="button"
-                className="select-none inline-block px-6 py-3 sm:py-2 border-2 border-red-800 text-red-800 hover:text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-red-800  hover:shadow-lg   transition duration-150 ease-in-out text-base md:text-lg"
-              >
-                Add to cart
-              </button>
-            </Link>
+              Add to cart
+            </button>
           </div>
         </div>
       </div>

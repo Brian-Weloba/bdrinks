@@ -14,7 +14,7 @@ export default function Product({ isOpen, setIsOpen, getSelectedProduct , produc
   const imageStyle = !imageLoaded ? { display: "none" } : {};
   const [show, setShow] = React.useState((state) => !state, true);
   //add cookies for favorites and cartItems
-  const [cookies, setCookie] = useCookies(["favorites", "cartItems"]);
+  const [cookies, setCookie] = useCookies(["favorites"]);
 
   const favorites = cookies.favorites;
   console.log(favorites);
@@ -90,72 +90,6 @@ export default function Product({ isOpen, setIsOpen, getSelectedProduct , produc
         }
       };
 
-      const addToCart = (prod) => {
-        console.log(prod);
-        if (cookies.cartItems === undefined || cookies.cartItems.length === 0) {
-          setCookie(
-            "cartItems",
-            [
-              {
-                productName: prod.productName,
-                productId: prod.productId,
-                productOptionId: prod.defaultOption,
-                productOptionPrice: optionPrice(),
-                productOptionVolume: optionVolume(),
-                productOptionQuantity: 1,
-                productOptionImage: prod.productImage,
-              },
-            ],
-            { path: "/" }
-          );
-        } else {
-          const newCart = cookies.cartItems;
-          const newProduct = newCart.find(
-            (product) => product.productId === prod.productId
-          );
-          if (newProduct === undefined) {
-            newCart.push({
-              productName: prod.productName,
-              productId: prod.productId,
-              productOptionId: prod.defaultOption,
-              productOptionPrice: optionPrice(),
-              productOptionVolume: optionVolume(),
-              productOptionQuantity: 1,
-              productOptionImage: prod.productImage,
-            });
-          } else {
-            newProduct.productOptionQuantity += 1;
-          }
-          setCookie("cartItems", newCart, { path: "/" });
-        }
-      };
-
-      // if (cookies.cartItems === undefined || cookies.cartItems.length === 0) {
-      //   setCookie(
-      //     "cartItems",
-      //     [
-      //       {
-      //         productId: product.productId,
-      //         productOptionId: product.defaultOption,
-      //         productOptionPrice: optionPrice(),
-      //         productOptionVolume: optionVolume(),
-      //         productOptionQuantity: 1,
-      //       },
-      //     ],
-      //     { path: "/" }
-      //   );
-      // } else {
-      //   const newCart = cookies.cartItems;
-      //   newCart.push({
-      //     productId: product.productId,
-      //     productOptionId: product.defaultOption,
-      //     productOptionPrice: optionPrice(),
-      //     productOptionVolume: optionVolume(),
-      //     productOptionQuantity: 1,
-      //   });
-      //   setCookie("cartItems", newCart, { path: "/" });
-      // }
-
       return (
         <div className=" justify-center h-max" key={index}>
           <div className="bg-white max-w-sm border-zinc-300 border-2">
@@ -224,12 +158,6 @@ export default function Product({ isOpen, setIsOpen, getSelectedProduct , produc
                       }}
                     ></HeartIcon>
                   )}
-                  {/* <HeartIcon
-                    className="h-6 w-6 lg:h-7 pl-1 lg:w-7 lg:pl-0 text-zinc-800 sm:hover:text-red-800"
-                    onClick={() => {
-                      addOrRemoveFavorites(product);
-                    }}
-                  ></HeartIcon> */}
                 </div>
               </div>
               <Link

@@ -4,6 +4,7 @@ import Product from "./Product";
 import { useParams } from "react-router-dom";
 import Example from "./Example";
 import CartModal from "./CartModal";
+import {ToastContainer, toast} from 'react-toastify';
 
 export default function Products({ cat }) {
   const [products, setProducts] = useState([]);
@@ -40,11 +41,13 @@ export default function Products({ cat }) {
   }
 
   return (
+    
     <div className=" sm:px-4 md:px-8 pt-16 grow bg-zinc-200">
+      
       {/* <button onClick={() => (!isOpen ? setIsOpen(true) : setIsOpen(false))}>
         Open Modal
       </button> */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1 sm:gap-2 p-2 sm:p-4 md:p-8 bg-transparent">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-2 p-2 sm:p-4 md:p-8 bg-transparent">
         <Product getSelectedProduct={getSelectedProduct} isOpen={isOpen} setIsOpen={setIsOpen} products={products} loading={loading} />
       </div>
       {isOpen && <CartModal setIsOpen={setIsOpen} selectedProduct={selectedProduct} />}
