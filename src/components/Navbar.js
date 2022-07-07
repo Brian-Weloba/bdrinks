@@ -131,7 +131,7 @@ export default function Navbar() {
                       <Link to="/favorites">
                         <button
                           type="button"
-                          class="inline-flex items-center justify-center p-1 rounded-md text-zinc-400 sm:hover:text-red-800"
+                          class="inline-flex items-center justify-center p-1 rounded-md text-zinc-400 sm:hover:text-white"
                         >
                           <HeartIcon
                             className=" h-6 w-6 sm:h-7 sm:w-7 mx-1"
