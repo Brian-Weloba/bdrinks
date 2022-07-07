@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Products from "./components/Products";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ShoppingCart } from "./components/ShoppingCart";
-import { Favorites } from "./components/Favorites";
+import Favorites  from "./components/Favorites";
 import ProductDetails from "./components/ProductDetails";
 import ScrollToTop from "./components/ScrollToTop";
 import { ToastContainer } from "react-toastify";
