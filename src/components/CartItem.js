@@ -66,7 +66,7 @@ const CartProduct = ({
 
   return (
     <div className="cart-item">
-      <div className=" h-max flex justify-between p-2  bg-zinc-100 mb-2 shadow-lg rounded-lg">
+      <div className=" h-max flex justify-between p-2  bg-zinc-100 mb-2 shadow-sm rounded-lg">
         <div className="flex flex-col sm:flex-row h-max">
           <div className=" w-full sm:w-36 relative rounded-lg my-auto ">
             <a href="#!">
@@ -140,6 +140,9 @@ const CartProduct = ({
             className="h-5 w-5 cursor-pointer"
           />
         </div>
+      </div>
+      <div className="pb-2">
+        <div className=" border-t-2 border-zinc-500"></div>
       </div>
     </div>
   );

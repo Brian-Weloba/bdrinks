@@ -48,13 +48,18 @@ export const ShoppingCart = () => {
     );
   } else {
     return (
-      <div className="sm:px-4 md:px-8 pt-24 grow bg-zinc-200">
+      <div className="sm:px-4 md:px-8 pt-24 grow bg-zinc-300">
         <h1 className="  text-white font-bold text-center sm:text-left px-6 py-2 text-2xl  bg-red-800 rounded-lg shadow-lg ">
             Shopping Cart
           </h1>
           <div className="flex p-4 flex-col lg:flex-row">
-            <div className="  bg-zinc-100 p-2 rounded-lg lg:w-3/5 m-2">
-              <div className="grid grid-cols-1">
+            <div className="  bg-zinc-200 p-2 rounded-lg lg:w-3/5 m-2">
+              <div className="border-b-2 pb-2 border-zinc-500">
+                <h1 className="text-base font-bold">
+                  Cart
+                </h1>
+                </div>
+              <div className="grid grid-cols-1 pt-4">
                 <div className=" justify-center h-max">
                   <CartItem
                     totalPrice={totalPrice}

@@ -27,7 +27,7 @@ export const OrderSummary = ({ totalPrice, cartItems }) => {
   }
 
   return (
-    <div className="grid grid-cols-1 rounded-xl bg-zinc-100 lg:w-2/5 m-2 h-max shadow-xl ">
+    <div className="grid grid-cols-1 rounded-xl bg-zinc-200 lg:w-2/5 m-2 h-max shadow-xl ">
       <div className="m-4 text-base">
         <h1 className="font-bold">Order Summary</h1>
         <div className="grid grid-cols-2 p-4 border-b-2 border-zinc-400 ">
