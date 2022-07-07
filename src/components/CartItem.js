@@ -66,9 +66,9 @@ const CartProduct = ({
 
   return (
     <div className="cart-item">
-      <div className=" h-max flex justify-between p-2 sm:p-6 border-b-2 border-zinc-400">
-        <div className="flex h-max">
-          <div className=" w-28 sm:w-48 rounded-lg my-auto">
+      <div className=" h-max flex justify-between p-2  bg-zinc-100 mb-2 shadow-lg rounded-lg">
+        <div className="flex flex-col sm:flex-row h-max">
+          <div className=" w-full sm:w-36 relative rounded-lg my-auto ">
             <a href="#!">
               {/* <PlaceholderImage /> */}
               <img
@@ -77,25 +77,33 @@ const CartProduct = ({
                 alt=""
               />
             </a>
+            <span className="absolute top-4 right-4 block sm:hidden">
+            <XIcon
+            onClick={() => {
+              handleRemoveItem(product);
+            }}
+            className="h-5 w-5 cursor-pointer"
+          />
+            </span>
           </div>
-          <div className="flex flex-col">
-            <div className=" pl-6 sm:pt-6 col-span-1 flex flex-col">
-              <h5 className="text-gray-900 text-base md:text-xl font-semibold mb-2 ">
+          <div className="flex flex-col relative">
+            <div className=" pl-6 col-span-1 flex flex-col">
+              <h5 className="text-gray-900 text-base  font-semibold  ">
                 {product.productName}
               </h5>
-              <h5 className="text-gray-900 text-base md:text-xl  mb-2 ">
+              <h5 className="text-gray-900 text-base    ">
                 {product.productVolume}
               </h5>
               <div className="flex flex-col xl:flex-row justify-between">
-                <p className="text-base md:text-xl text-red-700 mb-2 sm:mb-4 font-bold">
+                <p className="text-base  text-red-700 font-bold">
                   KES{" "}
                   {subTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-col mt-4 mx-1 sm:mx-4">
-              <div className=" mb-2 text-lg select-none">Quantity: </div>
+            <div className="flex flex-col pl-6">
+              <div className=" mb-2 text-base select-none">Quantity: </div>
               <div className="flex">
                 <MinusIcon
                   onClick={() => {
@@ -106,9 +114,9 @@ const CartProduct = ({
                       handleQuantityChange(product, newQuantity);
                     }
                   }}
-                  className="cursor-pointer px-2 h-7 text-red-800"
+                  className="cursor-pointer my-auto px-2 h-5 text-red-800"
                 />
-                <div className="flex flex-col text-xl font-semibold rounded-md bg-white w-11 text-center select-none">
+                <div className="flex flex-col text-xl font-semibold my-auto rounded-md bg-white w-11 text-center select-none">
                   <p className="my-auto">{quantity}</p>
                 </div>
                 <PlusIcon
@@ -118,18 +126,18 @@ const CartProduct = ({
                     setSubTotal(price * newQuantity);
                     handleQuantityChange(product, newQuantity);
                   }}
-                  className="cursor-pointer px-2 h-7 text-red-800"
+                  className="cursor-pointer my-auto px-2 h-5 text-red-800"
                 />
               </div>
             </div>
           </div>
         </div>
-        <div className="sm:pt-6">
+        <div className="hidden sm:block">
           <XIcon
             onClick={() => {
               handleRemoveItem(product);
             }}
-            className="h-5 w-5"
+            className="h-5 w-5 cursor-pointer"
           />
         </div>
       </div>

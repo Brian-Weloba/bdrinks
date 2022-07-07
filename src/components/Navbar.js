@@ -3,6 +3,7 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { ShoppingCartIcon, HeartIcon } from "@heroicons/react/outline";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const navigation = [
   { name: "Whisky", href: "/category/whisky", current: false },
@@ -25,12 +26,29 @@ function updateCurrent(navigation, path) {
   });
 }
 
+
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
   const [pathname, setPathname] = useState(window.location.pathname);
+  const [cookies, setCookie, removeCookie] = useCookies(["cartItems"]);
+  const [cartEmpty, setCartEmpty] = useState(true);
+
+  //keep checking of cart cookie has items.
+  useEffect(() => {
+    if (cookies.cartItems) {
+      if (cookies.cartItems.length > 0) {
+        setCartEmpty(false);
+      } else {
+        setCartEmpty(true);
+      }
+    }
+  }
+  , [cookies.cartItems]);
+
 
   useEffect(() => {
     updateCurrent(navigation, pathname);
@@ -72,17 +90,17 @@ export default function Navbar() {
                       />
                     </a>
                   </div>
-                  <div className="hidden sm:block sm:ml-6 my-auto">
-                    <div className="flex space-x-1">
+                  <div className="hidden sm:flex sm:items-stretch align-center sm:ml-6">
+                    <div className="flex align-stretch ">
                       {navigation.map((item) => (
                         <a
                           key={item.name}
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? "bg-zinc-900 text-white"
-                              : "text-zinc-300 hover:bg-zinc-700 hover:text-white",
-                            "px-2 py-2 rounded-md text-base font-medium"
+                              ? "bg-transparent text-red-600 border-b-2 border-red-600"
+                              : "text-zinc-300 border-zinc-500 hover:border-white -zinc-700 hover:text-white",
+                            "px-2 self-end pb-4  text-base font-medium mb-2 border-b-2 "
                           )}
                           aria-current={item.current ? "page" : undefined}
                         >
@@ -96,26 +114,45 @@ export default function Navbar() {
                       <Link to="/cart">
                         <button
                           type="button"
-                          className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-600"
+                          class="inline-flex relative items-center justify-center p-1 rounded-md text-zinc-400 sm:hover:text-white"
                         >
-                          <span className="sr-only">View cart</span>
                           <ShoppingCartIcon
                             className="h-6 w-6 sm:h-7 sm:w-7 mx-1"
                             aria-hidden="true"
                           />
+                          {!cartEmpty ? (
+                          <span className="flex h-3 w-3 absolute top-1 right-1 mb-0.5">
+                              <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-red-400 opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+                            </span>
+                          ) : null}
                         </button>
                       </Link>
                       <Link to="/favorites">
                         <button
                           type="button"
-                          className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-600"
+                          class="inline-flex items-center justify-center p-1 rounded-md text-zinc-400 sm:hover:text-red-800"
                         >
-                          <span className="sr-only">View cart</span>
                           <HeartIcon
                             className=" h-6 w-6 sm:h-7 sm:w-7 mx-1"
                             aria-hidden="true"
                           />
+                           
                         </button>
+                        {/* <button
+                          type="button"
+                          className="bg-zinc-800 p-1 rounded-full text-zinc-400 sm:hover:text-red-600"
+                        >
+                          <HeartIcon
+                            className=" h-6 w-6 sm:h-7 sm:w-7 mx-1"
+                            aria-hidden="true"
+                          />
+                          <span class="flex h-3 w-3">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+                            </span>
+                          
+                        </button> */}
                       </Link>
                     </div>
                   </div>

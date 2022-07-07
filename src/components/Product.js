@@ -9,7 +9,13 @@ import { Link } from "react-router-dom";
 import { PlaceholderImage } from "./PlaceholderImage";
 import { useCookies } from "react-cookie";
 
-export default function Product({ isOpen, setIsOpen, getSelectedProduct , products, loading }) {
+export default function Product({
+  isOpen,
+  setIsOpen,
+  getSelectedProduct,
+  products,
+  loading,
+}) {
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const imageStyle = !imageLoaded ? { display: "none" } : {};
   const [show, setShow] = React.useState((state) => !state, true);
@@ -92,19 +98,21 @@ export default function Product({ isOpen, setIsOpen, getSelectedProduct , produc
 
       return (
         <div className=" justify-center h-max" key={index}>
-          <div className="bg-white max-w-sm border-zinc-300 border-2">
+          <div className="bg-zinc-100 shadow-md rounded-lg max-w-sm ">
             <Suspense fallback={<PlaceholderImage />}>
               <a href="#!">
                 {!imageLoaded && <PlaceholderImage />}
-                <img
-                  className="rounded-t-lg"
-                  style={imageStyle}
-                  onLoad={() => setImageLoaded(true)}
-                  src={
-                    process.env.PUBLIC_URL + "/assets/" + product.productImage
-                  }
-                  alt={product.productName}
-                />
+                <div className="pt-2 px-2">
+                  <img
+                    className="rounded-lg"
+                    style={imageStyle}
+                    onLoad={() => setImageLoaded(true)}
+                    src={
+                      process.env.PUBLIC_URL + "/assets/" + product.productImage
+                    }
+                    alt={product.productName}
+                  />
+                </div>
               </a>
             </Suspense>
 
@@ -125,7 +133,7 @@ export default function Product({ isOpen, setIsOpen, getSelectedProduct , produc
                       //if isopen is false, open the modal
                       if (!isOpen) {
                         setIsOpen(true);
-                      }else{
+                      } else {
                         setIsOpen(false);
                       }
                     }}

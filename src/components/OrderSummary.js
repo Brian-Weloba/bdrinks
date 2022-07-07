@@ -27,8 +27,8 @@ export const OrderSummary = ({ totalPrice, cartItems }) => {
   }
 
   return (
-    <div className="grid grid-cols-1 rounded-xl bg-zinc-200 lg:w-2/5 m-2 h-max">
-      <div className="m-4 text-xl">
+    <div className="grid grid-cols-1 rounded-xl bg-zinc-100 lg:w-2/5 m-2 h-max shadow-xl ">
+      <div className="m-4 text-base">
         <h1 className="font-bold">Order Summary</h1>
         <div className="grid grid-cols-2 p-4 border-b-2 border-zinc-400 ">
           <h1>Subtotal</h1>
@@ -65,7 +65,7 @@ export const OrderSummary = ({ totalPrice, cartItems }) => {
             onClick={() => {
               whatsappCheckout();
             }}
-            className="bg-red-800 text-white font-bold py-2 px-4 rounded-lg"
+            className="select-none inline-block px-6 py-3 sm:py-2 border-2 border-red-800 text-red-800 hover:text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-red-800  hover:shadow-lg   transition duration-150 ease-in-out text-base"
           >
             Checkout
           </button>

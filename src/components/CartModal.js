@@ -151,11 +151,11 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
 
   return (
     //modal background div with blurry effect
-    <div className="fixed inset-0 z-50 overflow-auto flex items-center justify-center  bg-gray-900 bg-opacity-50">
-      <div className="max-w-lg w-full bg-white rounded-lg shadow-lg overflow-y-auto">
-        <div className=" flex justify-between border-b-2 border-red-800 p-3">
-          <h3 className="text-lg leading-6 font-semibold text-gray-900 select-none">
-            ADD TO CART
+    <div className="fixed inset-0 z-50 overflow-auto flex items-center justify-center  bg-gray-900 bg-opacity-20">
+      <div className="max-w-lg w-full bg-zinc-100 rounded-lg shadow-xl overflow-y-auto ">
+        <div className=" flex justify-between p-3">
+          <h3 className="text-base leading-6 font-bold text-gray-900 select-none">
+            Add to Cart
           </h3>
           <div className="flex items-center justify-end">
             <button
@@ -184,7 +184,7 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
         </div>
         <div className="flex flex-col ml-4 p-3">
           <div className="flex flex-col">
-            <h1 className="text-lg font-medium">
+            <h1 className="text-base font-medium">
               {product.productName} - {volume} @ KSH{" "}
               {price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
             </h1>
@@ -193,7 +193,7 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
               onChange={handleVolumeChange}
               className="mt-4 mx-2 sm:mx-4"
             >
-              <RadioGroup.Label className=" mb-2 text-lg select-none">
+              <RadioGroup.Label className=" mb-2 text-base select-none">
                 Choose a size:
               </RadioGroup.Label>
               <div className="mt-1 grid grid-cols-3 gap-2 sm:grid-cols-3 lg:grid-cols-6">
@@ -230,7 +230,7 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
             </RadioGroup>
 
             <div className="flex flex-col mt-4 mx-1 sm:mx-4">
-              <div className=" mb-2 text-lg select-none">Quantity: </div>
+              <div className=" mb-2 text-base select-none">Quantity: </div>
               <div className="flex">
                 <MinusIcon
                   onClick={() => {
@@ -240,9 +240,9 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
                       getTotalPrice(newQuantity, price);
                     }
                   }}
-                  className="cursor-pointer px-2 h-7 text-red-800"
+                  className="cursor-pointer px-2 h-5 text-red-800"
                 />
-                <div className="flex flex-col text-xl font-semibold rounded-md bg-white w-11 text-center select-none">
+                <div className="flex flex-col text-base font-semibold rounded-md bg-white w-11 text-center select-none">
                   <p className="my-auto">{quantity}</p>
                 </div>
                 <PlusIcon
@@ -251,16 +251,16 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
                     setQuantity(newQuantity);
                     getTotalPrice(newQuantity, price);
                   }}
-                  className="cursor-pointer px-2 h-7 text-red-800"
+                  className="cursor-pointer px-2 h-5 text-red-800"
                 />
               </div>
             </div>
           </div>
         </div>
-        <div className=" border-t-2 border-red-800 flex flex-col sm:flex-row py-4 mx-4 justify-between align-middle text-center">
+        <div className=" border-t-2 border-zinc-400 flex flex-col sm:flex-row py-4 mx-4 justify-between align-middle text-center">
           <div className=" self-center mb-3 sm:mb-0">
-            <h1 className="text-lg font-bold select-none">
-              Total:{" "}
+            <h1 className="text-base font-bold select-none">
+              TOTAL:{" "}
               <span className="text-red-800">
                 KSH{" "}
                 {total.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
@@ -273,7 +273,7 @@ export default function CartModal({ setIsOpen, selectedProduct }) {
                 handleAddToCart();
               }}
               type="button"
-              className="select-none inline-block px-6 py-3 sm:py-2 border-2 border-red-800 text-red-800 hover:text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-red-800  hover:shadow-lg   transition duration-150 ease-in-out text-base md:text-lg"
+              className="select-none inline-block px-6 py-3 sm:py-2 border-2 border-red-800 text-red-800 hover:text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-red-800  hover:shadow-lg   transition duration-150 ease-in-out text-base"
             >
               Add to cart
             </button>

@@ -48,13 +48,12 @@ export const ShoppingCart = () => {
     );
   } else {
     return (
-      <div className="pt-16 grow bg-zinc-100">
-        <div className="sm:mx-4 md:mx-8 w-100 mx-0">
-          <h1 className="  text-red-800 font-bold text-center sm:text-left ml-6 text-2xl py-10  bg-transparent">
+      <div className="sm:px-4 md:px-8 pt-24 grow bg-zinc-200">
+        <h1 className="  text-white font-bold text-center sm:text-left px-6 py-2 text-2xl  bg-red-800 rounded-lg shadow-lg ">
             Shopping Cart
           </h1>
-          <div className="flex flex-col lg:flex-row">
-            <div className=" border-t-2 border-zinc-800 bg-transparent lg:w-3/5 m-2">
+          <div className="flex p-4 flex-col lg:flex-row">
+            <div className="  bg-zinc-100 p-2 rounded-lg lg:w-3/5 m-2">
               <div className="grid grid-cols-1">
                 <div className=" justify-center h-max">
                   <CartItem
@@ -77,7 +76,6 @@ export const ShoppingCart = () => {
               cartItems={cartItems}
             />
           </div>
-        </div>
       </div>
     );
   }
