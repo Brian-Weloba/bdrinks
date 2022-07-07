@@ -3,7 +3,25 @@ import React from "react";
 
 export const OrderSummary = ({
   totalPrice,
+  cartItems,
 }) => {
+
+  function whatsappCheckout(){
+    let whatsappNumber = "254722753670";
+    let message = "Hello *Berny's*,%0a%0a I would like to order the following items:%0a%0a";
+    cartItems.forEach((item) => {
+      message += `${item.productName} - ${item.quantity} x ${item.productPrice} = ${item.productPrice * item.quantity}%0a`;
+    });
+    message += `%0aTotal: ${totalPrice}`;
+    message += "%0a Please deliver to: address. %0a%0a Thank you!";
+
+    window.open(
+      `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`,
+      "_blank"
+    );
+
+    }
+
   return (
     <div className="grid grid-cols-1 rounded-xl bg-zinc-200 lg:w-2/5 m-2 h-max">
       <div className="m-4 text-xl">
@@ -39,7 +57,11 @@ export const OrderSummary = ({
           </h1>
         </div>
         <div className="grid grid-cols-1 m-4 ">
-          <button className="bg-red-800 text-white font-bold py-2 px-4 rounded-lg">
+          <button 
+          onClick={() => {
+            whatsappCheckout();
+          }}
+          className="bg-red-800 text-white font-bold py-2 px-4 rounded-lg">
             Checkout
           </button>
         </div>
