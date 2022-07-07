@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function App() {
   return (
     <div className="flex flex-col h-screen">
-      <Router>
+      <Router  className="flex flex-row">
         <ScrollToTop />
         <Navbar />
         <ToastContainer

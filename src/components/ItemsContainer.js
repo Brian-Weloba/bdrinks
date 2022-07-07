@@ -2,13 +2,34 @@ import React from "react";
 
 const ItemsContainer = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-4 gap-0 sm:gap-6 sm:px-8 px-5 py-10 text-center sm:text-left">
-      <div className=" text:base sm:text-lg col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-0 sm:pl-8 p-0 ">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 sm:gap-6 sm:px-8 px-5 py-10 text-center sm:text-left">
+            <div className="col-span-1">
+        <ul>
+          <li>
+            <h1 className="mb-1 font-semibold">INFORMATION</h1>
+          </li>
+          <li className="py-2">
+            <p>Payment: On Delivery</p>
+          </li>
+          <li>
+            <p>Delivery Time: 90 MINUTES MON-SUN 8:30AM - 6:15PM</p>
+          </li>
+          <li>
+            <p>Call: +254711346421</p>
+          </li>
+          <li>
+            {/* mpesa icon */}
+            <img className="w-1/2 sm:w-1/4 mt-1 mx-auto sm:ml-0"  src={`${process.env.PUBLIC_URL}/mpesa.png`} alt="Buy goods" />
+            {/* <p>Buy Goods:9378773</p> */}
+          </li>
+        </ul>
+      </div>
+      <div className=" text:base col-span-1 sm:col-span-1 grid grid-cols-1 sm:grid-cols-2 gap-0 sm:pl-8 p-0 ">
         <div className=" col-span-1 sm:col-span-2 justify-center mx-auto">
           <img
             src={process.env.PUBLIC_URL + "/logo.png"}
             alt="logo"
-            className=" w-2/3 sm:w-1/2 mx-auto sm:mr-auto sm:ml-0 pb-3"
+            className=" w-2/3 sm:w-1/3 mx-auto sm:mr-auto sm:ml-0 pb-3"
           />
         </div>
         <div className=" pt-1 flex justify-center sm:justify-start sm:border-t-2 sm:border-zinc-400">
@@ -72,27 +93,6 @@ const ItemsContainer = () => {
             </li>
           </ul>
         </div>
-      </div>
-      <div className="col-span-2">
-        <ul>
-          <li>
-            <h1 className="mb-1 font-semibold">INFORMATION</h1>
-          </li>
-          <li className="py-2">
-            <p>Payment: On Delivery</p>
-          </li>
-          <li>
-            <p>Delivery Time: 90 MINUTES MON-SUN 8:30AM - 6:15PM</p>
-          </li>
-          <li>
-            <p>Call: +254711346421</p>
-          </li>
-          <li>
-            {/* mpesa icon */}
-            <img className="w-1/2 sm:w-1/4 mt-1 mx-auto sm:ml-0"  src={`${process.env.PUBLIC_URL}/mpesa.png`} alt="Buy goods" />
-            {/* <p>Buy Goods:9378773</p> */}
-          </li>
-        </ul>
       </div>
     </div>
   );

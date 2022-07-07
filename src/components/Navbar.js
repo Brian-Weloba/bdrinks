@@ -16,15 +16,7 @@ const navigation = [
 ];
 
 //function to update the current item
-function updateCurrent(navigation, path) {
-  navigation.forEach((item) => {
-    if (item.href.toLowerCase() === path.toLowerCase()) {
-      item.current = true;
-    } else {
-      item.current = false;
-    }
-  });
-}
+
 
 
 
@@ -54,6 +46,18 @@ export default function Navbar() {
     updateCurrent(navigation, pathname);
   }, [pathname]);
 
+  function updateCurrent(navigation, path) {
+    navigation.forEach((item) => {
+      console.log("item.href", item.href);
+      console.log("path", path);
+      if (item.href.toLowerCase() === path.toLowerCase()) {
+        item.current = true;
+      } else {
+        item.current = false;
+      }
+    });
+  }
+  
   return (
     <div className="fixed top-0 z-50 w-full">
       <Disclosure as="nav" className="bg-zinc-800 ">
