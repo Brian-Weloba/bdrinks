@@ -7,7 +7,7 @@ export const OrderSummary = ({
 }) => {
 
   function whatsappCheckout(){
-    let whatsappNumber = "254722753670";
+    let whatsappNumber = "254712000928";
     let message = "Hello *Berny's*,%0a%0a I would like to order the following items:%0a%0a";
     cartItems.forEach((item) => {
       message += `${item.productName} - ${item.quantity} x ${item.productPrice} = ${item.productPrice * item.quantity}%0a`;
