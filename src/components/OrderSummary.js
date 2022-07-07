@@ -8,16 +8,16 @@ export const OrderSummary = ({ totalPrice, cartItems }) => {
       "Hello *Berny's*,%0a%0a I would like to order the following items:%0a%0a";
     cartItems.forEach((item) => {
       let Subtotal = item.productPrice * item.quantity;
-      message += `${item.productName} ${item.productVolume} x ${
+      message += `*${item.productName} ${item.productVolume}* x *${
         item.quantity
-      } = KES ${Subtotal.toString().replace(
+      }* = *KES ${Subtotal.toString().replace(
         /\B(?=(\d{3})+(?!\d))/g,
         ","
-      )}%0a`;
+      )}*%0a`;
     });
-    message += `%0aTotal: KES ${totalPrice
+    message += `%0a*Total: KES ${totalPrice
       .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}*`;
     message += "%0a%0a Please deliver to: address.%0a%0a Thank you!";
 
     window.open(
