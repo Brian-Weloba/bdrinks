@@ -48,8 +48,8 @@ export const ShoppingCart = () => {
     );
   } else {
     return (
-      <div className="sm:px-4 md:px-8 pt-24 grow bg-zinc-300">
-        <h1 className="  text-white font-bold text-center sm:text-left px-6 py-2 text-2xl  bg-red-800 rounded-lg shadow-lg ">
+      <div className="md:px-8 md:pt-24 grow bg-zinc-300">
+        <h1 className="  text-white font-bold text-center pt-20 md:pt-2  py-2 md:text-left md:px-6 md:py-2 text-2xl  bg-gradient-to-r from-red-800 to-zinc-800 via-zinc-800   md:rounded-lg shadow-lg ">
             Shopping Cart
           </h1>
           <div className="flex p-4 flex-col lg:flex-row">

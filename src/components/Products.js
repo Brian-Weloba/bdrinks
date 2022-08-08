@@ -48,7 +48,7 @@ export default function Products({ cat }) {
   return (
     
     <div className=" sm:px-4 md:px-8 pt-24 grow bg-zinc-200">
-      <h1 className="  text-white font-bold text-center sm:text-left px-6 py-2 text-2xl  bg-red-800 rounded-lg shadow-lg ">
+      <h1 className="  text-white font-bold text-center sm:text-left px-6 py-2 text-2xl bg-gradient-to-r from-red-800 to-zinc-800 via-zinc-800  rounded-lg shadow-lg ">
         {category === "all" ? "All Products" : capitalizeFirstLetter(pathCategory)}
           </h1>
       
