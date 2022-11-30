@@ -20,10 +20,10 @@ export default function Products({ cat }) {
       setLoading(true);
       let res;
       if (category === "all") {
-        res = await axios.get("https://bernyz.co.ke/api/products");
+        res = await axios.get("http://129.151.175.138:8081/products");
       } else {
         res = await axios.get(
-          `https://bernyz.co.ke/api/products/categories/get?name=${pathCategory}`
+          `http://129.151.175.138:8081/products/categories/get?name=${pathCategory}`
         );
       }
       setProducts(res.data);
